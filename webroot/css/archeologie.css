@@ -1,0 +1,628 @@
+
+
+/*Pour faire en sorte que le width et le height prennent en compte la padding et le border*/
+* { box-sizing: border-box; }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 12px !important;
+}
+
+button, .btn {
+    font-size: 12px !important;
+}
+/*---------------------------------------------*\
+/                                               /
+/       Le menu de navigation                   /
+/                                               /
+/*---------------------------------------------*/
+.menu__fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+}
+
+.menu__floating{
+    /*margin: 0px 0px 20px 0px;*/
+    /*padding: 0px;*/
+    position: absolute;
+    top: 320px;
+    width: 100%;
+    z-index: 100;
+}
+.menu__list {
+    list-style-type: none;
+    background-color: #371A0C;/*#674A3C;*/
+    font-size: 16px;
+    color: #756C6E;
+    margin: 0px;
+    height: 55px;
+    padding: 10px 0px 0px 30%;
+    border-bottom: 3px solid #fff;
+    box-shadow: 0px -10px 8px rgba(0, 0, 0, 0.56);
+}
+
+.menu__list > li {
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu__list > li > a {
+    margin: 0px;
+    height: 100%;
+    display: inline-block;
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.menu__list > li:hover{
+    box-shadow: 2px -6px 3px rgba(150, 150, 150, 1);
+}
+.menu__list > li:hover, .menu__active{
+    background-color: #FFF;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #371A0C;
+    box-shadow: 0px -3px 3px rgba(150, 150, 150, 0.8);
+}
+
+.menu__list > li > a, .dropdown__menu__list > li > a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/*---------------------------------------------*\
+/                                               /
+/       Le sous menu de navigation              /
+/                                               /
+/*---------------------------------------------*/
+
+
+.dropdown__double {
+    width: 200%;
+}
+
+.dropdown__simple__plus {
+    width: 150%;
+}
+
+.dropdown__simple {
+    width: 100%;
+}
+
+.dropdown__menu__list{
+    position: absolute;
+    list-style-type: none;
+    background-color: #371A0C;
+    margin: 0px;
+    z-index: 100;
+    padding: 0px;
+    opacity: 0;
+
+    display: none;
+    box-shadow: 0px 0px 80px rgba(0,0,0,0.9975);
+    transition: display 1.5s;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius: 5px;
+}
+
+.menu__list > li:hover .dropdown__menu__list{
+    opacity: 0.979;
+    display: block;
+}
+
+.dropdown__menu__list > li {
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    color: #756C6E;
+}
+
+.dropdown__menu__list > li > a {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+}
+/*.dropdown__menu__list__img > li {*/
+    /*font-size: 12px !important;*/
+    /*text-align: left !important;*/
+    /*padding-right: 5px !important;*/
+    /*padding-top:5px !important;*/
+/*}*/
+.dropdown__menu__list > li:hover{
+    background-color: #F5F5F5/*#674A3C*/;
+    color: #371A0C;
+}
+
+.logo__menu {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+/*---------------------------------------------*\
+/                                               /
+/       Les images du slider                    /
+/                                               /
+/*---------------------------------------------*/
+
+.slider__img {
+    height: 320px !important;
+    width: 100% !important;
+}
+
+/*---------------------------------------------*\
+/                                               /
+/       Les blocs avec les cartes               /
+/                                               /
+/*---------------------------------------------*/
+.map__card {
+    border: 0.5px solid #b8c7ce;
+    border-radius: 4px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+}
+.map__card:hover{
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+}
+#map_canvas, #map_canvas_two {
+    width: 100% !important;
+}
+
+.map__description {
+    padding: 10px;
+    text-align: center;
+}
+
+.map__description__title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.map__description__body{
+    padding: 0px;
+    font-size: 12px;
+    line-height: 18px;
+}
+.map__description_footer {
+    margin: 10px;
+    padding: 0px;
+}
+
+.map__cartographie{
+    margin: 20px;
+    border: 2px solid blueviolet;
+    width: 100%;
+}
+
+/*---------------------------------------------*\
+/                                               /
+/       Le pied de page                         /
+/                                               /
+/*---------------------------------------------*/
+.footer__content {
+    width: 100%;
+    height: inherit;
+    padding: 0px;
+    margin: 0px;
+    background-color: #000;
+    opacity: 0.45;
+}
+
+.site__footer {
+    background-color: #674A3C;
+    height: 300px;
+    width: 100%;
+    margin: 8% 0px 0px 0px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    button: 0px;
+    padding: 0px;
+}
+
+.site__footer  ul {
+    list-style-type: none;
+}
+
+.footer__list {
+    line-height: 2.0;
+}
+
+.footer__list >  li  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #8898aa;
+    transition: color 0.8s;
+}
+
+.footer__list >  li  a:hover{
+    color: #fff;
+}
+
+.footer__list > h3 {
+    color: orange;
+}
+
+.footer__details__first {
+    border-left:1.5px solid #FFFFFF;
+    padding-left: 15px;
+}
+.footer__details {
+    list-style-type: none;
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer__details > li {
+    display: inline-block;
+    margin-right: 15px;
+    border-right:1.5px solid #FFFFFF;
+    padding-right: 15px;
+}
+
+.footer__details > li > a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+/*---------------------------------------------*\
+/                                               /
+/       Le méli-mélo pas rangé                  /
+/                                               /
+/*---------------------------------------------*/
+.page-header {
+    position: relative;
+    margin-top: 70px;
+    padding: 10px;
+}
+
+.footer__block {
+    margin-left: 40px;
+    border: 0px solid #8898aa;
+    text-align: left;
+}
+
+.site__trademark{
+    margin-top: 30px;
+    padding: 20px;
+    text-align: right;
+}
+
+
+/*---------------------------------------------*\
+/                                               /
+/                  les tables                   /
+/                                               /
+/*---------------------------------------------*/
+
+.my__table {
+    border-collapse: separate;
+    border-spacing: 1.5em 1.5em;
+}
+
+.custom__table {
+    width: 100%;
+    /*border-collapse: separate;*/
+    /*border-spacing: 0em 0.2em;*/
+}
+
+.custom__table tbody {
+}
+
+.custom__table tbody  tr td {
+}
+
+
+.custom__table thead{
+}
+
+.custom__table thead tr th {
+    padding: 12px 8px 12px 8px;
+    border: 1px solid #ddd;
+    background-color: #0d6aad;
+    color: white;
+    text-align: center;
+}
+
+.custom__table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.custom__table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.custom__table tr:hover {
+    background-color: #ddd;
+}
+
+.custom__table th > a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+
+
+/*---------------------------------------------*\
+/                                               /
+/         Le formulaire de recherche            /
+/                                               /
+/*---------------------------------------------*/
+
+.search__form {
+    display: inline-block;
+    float: right;
+    margin-bottom: 30px;
+}
+
+
+/*---------------------------------------------*\
+/                                               /
+/         La pagination des résultats            /
+/                                               /
+/*---------------------------------------------*/
+
+.my__pagination {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    /*border:2px solid red;*/
+}
+
+
+/*---------------------------------------------*\
+/                                               /
+/         Le modal de login                     /
+/                                               /
+/*---------------------------------------------*/
+
+
+.modal__element {
+    display: none;
+
+    padding-top: 20%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    z-index: 9999;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+.modal__content{
+    /*width: 400px;*/
+    /*height:300px;*/
+    /*border-radius: 6px;*/
+    /*background-color: #ffffff;*/
+    /*box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.8);*/
+}
+
+.modal__close {
+    /*float: right;*/
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+    /*right: 20px;*/
+    left: 95%;
+    /*padding-bottom: 20px;*/
+}
+
+.modal__down {
+    clear: both;
+}
+
+/*---------------------------------------------*\
+/                                               /
+/         Le loader de l'application            /
+/                                               /
+/*---------------------------------------------*/
+
+
+@-webkit-keyframes ld {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+@-moz-keyframes ld {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+@-o-keyframes ld {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes ld {
+    0%   { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.m-progress {
+    position: relative;
+    opacity: .8;
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
+.m-progress:hover,
+.m-progress:active,
+.m-progress:focus {
+    cursor: default;
+    color: transparent;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.m-progress:before {
+    content: '';
+
+    display: inline-block;
+
+    position: absolute;
+    background: transparent;
+    border: 1px solid #fff;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+
+    box-sizing: border-box;
+
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+
+    width: 24px;
+    height: 24px;
+
+    -webkit-animation: ld 1s ease-in-out infinite;
+    -moz-animation:    ld 1s ease-in-out infinite;
+    -o-animation:      ld 1s ease-in-out infinite;
+    animation:         ld 1s ease-in-out infinite;
+}
+
+.btn-default.m-progress:before {
+    border-left-color: #333333;
+    border-right-color: #333333;
+}
+
+.btn-lg.m-progress:before {
+    margin-top: -16px;
+    margin-left: -16px;
+
+    width: 32px;
+    height: 32px;
+}
+
+.btn-sm.m-progress:before {
+    margin-top: -9px;
+    margin-left: -9px;
+
+    width: 18px;
+    height: 18px;
+}
+
+.btn-xs.m-progress:before {
+    margin-top: -7px;
+    margin-left: -7px;
+
+    width: 14px;
+    height: 14px;
+}
+
+
+
+
+/*---------------------------------------------*\
+/                                               /
+/         Le loader de la carte                 /
+/                                               /
+/*---------------------------------------------*/
+
+
+
+.wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+}
+
+.text {
+    color: #fbae17;
+    display: inline-block;
+    padding-top: 20px;
+    margin-left: 40px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+.bounceball {
+    position: absolute;
+    display: inline-block;
+    height: 40px;
+    width: 30px;
+    top: 40%;
+    left: 40%;
+}
+.bounceball:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #fbae17;
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-animation: bounce 500ms alternate infinite ease;
+    animation: bounce 500ms alternate infinite ease;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
+}
+
+
+
+
+
+
+
