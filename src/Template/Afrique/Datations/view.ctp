@@ -105,11 +105,11 @@
                     </tr>
                     <tr>
                         <td>Horizon culturel</td>
-                        <td><?= h($datation->horizon_culturel) ?></td>
+                        <td><?= $datation->horizon_culturel ?></td>
                     </tr>
                     <tr>
                         <td>Numéro de structure</td>
-                        <td></td>
+                        <td><?= $datation->numero_structure ?></td>
                     </tr>
                     <tr>
                         <td>Pays</td>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <td>Détails du site de récolte</td>
-                        <td><?= h($datation->detail_site_recolte) ?></td>
+                        <td><?= $datation->detail_site_recolte ?></td>
                     </tr>
                 </table>
             </div>

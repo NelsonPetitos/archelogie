@@ -5,6 +5,11 @@
 
 <?= $this->Search->setSearchUrl($searchUrl); ?>
 
+<div class="btn-group" style="position: relative; float: right; padding-bottom: 10px">
+    <?= $this->element('page_limit'); ?>
+</div>
+
+<input type="hidden" id="sitedetailUrl" value="<?= Cake\Routing\Router::url(['controller'=>'Sites', 'action'=>'view', 'prefix'=>'afrique']); ?>" />
 <div class="col-md-12">
     <div class="row">
         <table id="archeologie_table" class="custom__table">
@@ -30,12 +35,12 @@
                 <?php if(count($datations) > 0): ?>
                     <?php foreach ($datations as $datation): ?>
                         <tr onclick='voirDetail("<?= Cake\Routing\Router::url(['controller' => 'datations', 'action' => 'view', $datation->id]); ?>")'>
-                            <td><?= __($datation->date_bp) ?></td>
-                            <td><?= __($datation->erreur_standard) ?></td>
-                            <td><?= h($datation->date_calibree) ?></td>
+                            <td><?= $datation->date_bp ?></td>
+                            <td><?= $datation->erreur_standard ?></td>
+                            <td><?= $datation->date_calibree ?></td>
                             <td><?= $datation->has('site') ? $this->Html->link($datation->site->name, ['controller' => 'Sites', 'action' => 'view', $datation->site->id]) : '' ?></td>
-                            <td><?= $datation->has('laboratoire') ? $this->Html->link($datation->laboratoire->code_laboratoire, ['controller' => 'Laboratoires', 'action' => 'view', $datation->laboratoire->id]) : '' ?></td>
-                            <td><?= h($datation->code_reference) ?></td>
+                            <td><?= $datation->laboratoire->code_laboratoire ?></td>
+                            <td><?= $datation->code_reference ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -43,7 +48,9 @@
 
         </table>
     </div>
-
+    <div class="my__pagination" id="pagination_box" style="display: inline;">
+        <?= $this->element('pagination'); ?>
+    </div>
 </div>
 
 <?= $this->start('script'); ?>

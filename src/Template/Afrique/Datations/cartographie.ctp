@@ -20,7 +20,7 @@
         <div class="col-md-5" >
             <table class="my__table">
                 <tr>
-                    <td colspan="2">La distribution géographique des sites archéologiques peut-être étudiée selon deux méthodes : </td>
+                    <td colspan="2">La distribution géographique des sites archéologiques peut-être abordée selon deux méthodes : </td>
                 </tr>
                 <tr>
                     <td colspan="2">1 - les valeurs cumulées -> visualisation des sites dont les datations sont comprises entre deux valeurs min et max,</td>

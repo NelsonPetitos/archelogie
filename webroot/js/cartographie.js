@@ -213,6 +213,7 @@ $("#cumulMax").keyup(function (touche) {
 
 
 
+
 //Fonction pour lancer la recherche à travers le boutton
 $("#recherche").click(function () {
 //Je traite la valeur mainimale
@@ -246,6 +247,7 @@ $("#recherche").click(function () {
 
 
 
+
 //fonction de contrôle de saisie des valeurs non cumulées
 $("#datebp").keyup(function (touche) {
     //Effectuer un contrôle pour voir si on a appuyé sur la touche Entrée du clavier
@@ -263,6 +265,8 @@ $("#datebp").keyup(function (touche) {
         //appel ajax pour l'affichage de marqueurs va etre différée dans la function change du slider
     }
 });
+
+
 
 
 
@@ -297,6 +301,8 @@ function appelAjax() {
         }
     });
 }
+
+
 
 
 

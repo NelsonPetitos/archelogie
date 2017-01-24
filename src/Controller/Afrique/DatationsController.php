@@ -4,6 +4,7 @@ namespace App\Controller\Afrique;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Datations Controller
@@ -37,33 +38,56 @@ class DatationsController extends AppController
      */
     public function index()
     {
+        //Building the request
+        $query = $this->Datations->find()->where(['Datations.source_id' => 1]);
+        //Request is coming from ajax call
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'contain' => ['Laboratoires', 'Sites'],
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Datations.date_bp' => 'asc'
+                ]
+            ];
 
-            $query = $this->Datations->find()->order(['date_bp' => 'DESC']);
+            //Check if there is or not search parameters.
             if(count($this->request->data(['params']) != 0)){
                 $params = $this->request->data(['params']);
                 $conditions = $this->Search->searchConditions($params, 'Datations');
-                $this->paginate = [
-                    'contain' => ['Laboratoires', 'Sites']
-                ];
-                $datas = $this->paginate($query->where($conditions));
+                $datas = $this->paginate($query->andWhere($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+
+            //Change the render layout to render an ajax object
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas', 'pagination']);
         }else{
             $this->set('searchUrl', Router::url(['controller' => 'Datations', 'prefix' => 'afrique', '?' => ['page' => 1],]));
 
             $this->paginate = [
                 'contain' => ['Laboratoires', 'Sites'],
-                'limit' => 10
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Datations.date_bp' => 'asc'
+                ]
             ];
-            $datations = $this->paginate($this->Datations);
+            $datations = $this->paginate($query);
             $this->set(compact('datations'));
             $this->set('activedatation', true);
             $this->set('_serialize', ['datations']);
@@ -181,10 +205,12 @@ class DatationsController extends AppController
     }
 
 
-
-
-
-
+    /**
+     *Permet de récupérer les premières datations issues de l'affichage de la carte.
+     *
+     * @param null
+     * @return datations
+     */
     public function getSessionDatations(){
         $this->RequestHandler->renderAs($this, 'json');
         $this->response->type('application/json');
@@ -197,80 +223,5 @@ class DatationsController extends AppController
             $this->set('_serialize', ['datas']);
         }
     }
-
-
-
-
-//    function searchCarto($val = null, $cumul = null, $maxVal = null, $minVal = null) {
-//        $query = $this->Datations->find();
-//        $querycontains = $query->contain(['Sites' => function($q){
-//            $q->select(['id', 'name']);
-//        }]);
-//        $max = $query->select(['date_bp'])->max('date_bp')->toArray();
-//        $min = $query->select(['date_bp'])->min('date_bp')->toArray();
-//
-//        //Je suis au premier passage dans la méthode
-//        if ($this->request->is('get')){
-//
-//        } else {
-//            //Le cas ou on a une valeur issue de l'animation du curseur
-//            if ($val < 0)
-//                $val = $val * -1;
-//            $this->Datation->recursive = 2;
-//
-//            //Condition de recherche differente en fonction du choix de cumuler les valeurs ou pas
-//            if ($cumul === "non") {
-//                $conditions = array(
-//                    'conditions' => array(
-//                        $val . ' between Datation.date_bp - Datation.erreur_standard and Datation.date_bp + Datation.erreur_standard'
-//                    ),
-//                );
-//                $resultat = $this->Datation->find('all', $conditions);
-//            } else {
-//                if($maxVal < 0 )
-//                    $maxVal = $maxVal * (-1);
-//                if($minVal < 0 )
-//                    $minVal = $minVal * (-1);
-//                //A ne pas éffacer
-//                $conditions = array(
-//                    'conditions' => array(
-//                        'Datation.date_bp - Datation.erreur_standard <= ' . $maxVal . 'and Datation.date_bp + Datation.erreur_standard >= ' . $minVal
-//                    ),
-//                );
-//                $resultat = $this->Datation->find('all', $conditions);
-//            }
-//            $this->autoRender = false;
-//            header('Content-type: application/json');
-//            echo json_encode($resultat);
-//        }
-//    }
-
-//    public function search(){
-//        if($this->request->is('ajax')) {
-//            // Force le controller à rendre une réponse JSON.
-//            $this->RequestHandler->renderAs($this, 'json');
-//            // Définit le type de réponse de la requete AJAX
-//            $this->response->type('application/json');
-//
-//            $query = $this->Datations->find()->order(['date_bp' => 'DESC']);
-//            $params = $this->request->data(['params']);
-//            $conditions = $this->Search->searchConditions($params, 'Datations');
-//            $this->paginate = [
-//                'contain' => ['Laboratoires', 'Sites']
-//            ];
-////            $conditions = ['source_id'=> 1];
-//            // Find pour récupérer les sites avec le bon serveur
-//            $datas = $this->paginate($query->where($conditions));
-//
-//
-//            // Chargement du layout AJAX
-//            $this->viewBuilder()->layout('ajax');
-//            // Créer un contexte sites à renvoyer
-//            $this->set(compact('datas'));
-////            $this->set('datas', $conditions);
-//            // Généreration des vues de données
-//            $this->set('_serialize', ['datas']);
-//        }
-//    }
 
 }

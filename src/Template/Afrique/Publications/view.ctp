@@ -24,7 +24,7 @@
                 <table class="my__table">
                     <tr>
                         <td>Titre de la publication</td>
-                        <td><?= h($publication->title) ?></td>
+                        <td><?= $publication->title ?></td>
                     </tr>
                     <tr>
                         <td>Année de publication</td>
@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <td>Référence bibliographique</td>
-                        <td><?= $this->Text->autoParagraph(h($publication->reference)); ?></td>
+                        <td><?= $publication->reference ?></td>
                     </tr>
                 </table>
             </div>
@@ -43,13 +43,13 @@
         <div class="panel panel-info">
             <div class="panel-heading">Auteurs</div>
             <div class="panel-body">
-                <ol>
-                    <li>
+                <ul>
                         <?php foreach ($publication->auteurs as $auteur): ?>
+                    <li>
                         <?= h($auteur->name) ?>
-                        <?php endforeach; ?>
                     </li>
-                </ol>
+                        <?php endforeach; ?>
+                </ul>
             </div>
 
         </div>

@@ -4,6 +4,7 @@ namespace App\Controller\Afrique;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Routing\Router;
+use Cake\View\View;
 /**
  * Publications Controller
  *
@@ -24,27 +25,50 @@ class PublicationsController extends AppController
      */
     public function index()
     {
+        $query = $this->Publications->find()->where(['Publications.source_id' => 1]);
+
         if($this->request->is('ajax')){
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Publications.title' => 'asc'
+                ]
+            ];
+
+            if(count($this->request->data(['params']) != 0)){
+                $params  = $this->request->data(['params']);
+                $conditions = $this->Search->searchConditions($params, 'Publications');
+                $datas = $this->paginate($query->andWhere($conditions));
+            }else{
+                $datas = $this->paginate($query);
+            }
+
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
             $this->RequestHandler->renderAs($this, 'json');
             $this->response->type('application/json');
             $this->viewBuilder()->layout('ajax');
 
-            $query = $this->Publications->find()->order(['title' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
-                $conditions = $this->Search->searchConditions($params, 'Publications');
-                $datas = $this->paginate($query->where($conditions)->andWhere(['source_id' => 1]));
-            }else{
-                $datas = $this->paginate($query->where(['source_id' => 1]));
-            }
-
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas', 'pagination']);
         }else{
             $this->set('searchUrl', Router::url(['controller' => 'Publications', 'prefix' => 'afrique', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Publications.title' => 'asc'
+                ]
+            ];
+            $publications = $this->paginate($query);
             $this->viewBuilder()->layout('afriqueCentraleLayout');
-            $publications = $this->paginate($this->Publications->find()->where(['source_id' => 1]));
             $this->set(compact('publications'));
             $this->set('_serialize', ['publications']);
             $this->set('activepublication', true);
@@ -69,34 +93,5 @@ class PublicationsController extends AppController
         $this->set('activepublication', true);
         $this->viewBuilder()->layout('afriqueCentraleLayout');
     }
-
-
-//    public function search(){
-//        if($this->request->is('ajax')) {
-//            // Force le controller à rendre une réponse JSON.
-//            $this->RequestHandler->renderAs($this, 'json');
-//            // Définit le type de réponse de la requete AJAX
-//            $this->response->type('application/json');
-//
-//            $query = $this->Publications->find()->order(['title' => 'DESC']);
-//
-//            $params = $this->request->data('params');
-//
-//            $conditions = $this->Search->searchConditions($params, 'Publications');
-//
-//            // Find pour récupérer les sites avec le bon serveur
-//            $datas = $this->paginate($query->where($conditions));
-//
-//            // Chargement du layout AJAX
-//            $this->viewBuilder()->layout('ajax');
-//
-//            // Créer un contexte sites à renvoyer
-//            $this->set(compact('datas'));
-////            $this->set('datas', $conditions);
-//
-//            // Généreration des vues de données
-//            $this->set('_serialize', ['datas']);
-//        }
-//    }
 
 }

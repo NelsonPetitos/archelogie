@@ -6,6 +6,10 @@
 
 <?= $this->Search->setSearchUrl($searchUrl); ?>
 
+<div class="btn-group" style="position: relative; float: right; padding-bottom: 10px">
+    <?= $this->element('page_limit'); ?>
+</div>
+
 <div class="col-md-12">
     <div class="row">
         <table class="custom__table">
@@ -34,5 +38,7 @@
             </tbody>
         </table>
     </div>
-    <!--<?= $this->element('pagination'); ?>-->
+    <div class="my__pagination" id="pagination_box" style="display: inline;">
+        <?= $this->element('pagination'); ?>
+    </div>
 </div>

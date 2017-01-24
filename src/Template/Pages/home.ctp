@@ -119,10 +119,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-$(function() {
-    console.log( "ready!" );
-});
-</script>
-
 <!--<?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyAt76Pcfr0uKwMgicAtyksRa6hkXyYKep0&sensor=false", array(false)); ?>-->
