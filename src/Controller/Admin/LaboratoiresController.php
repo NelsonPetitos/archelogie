@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Laboratoires Controller
@@ -17,29 +18,53 @@ class LaboratoiresController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
+        $query = $this->Laboratoires->find();
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Laboratoires.modified' => 'DESC',
+                    'Laboratoires.code_laboratoire' => 'ASC'
+                ]
+            ];
 
-            $query = $this->Laboratoires->find()->order(['code_laboratoire' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
-                $conditions = $this->Search->searchConditions($params, 'Laboratoires');
+            $params  = $this->request->data(['params']);
+            if(count($params) != 0){
+                $conditions = $this->Search->searchConditions($params, 'Auteurs');
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Laboratoires', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
+            $this->set('searchUrl', Router::url(['controller' => 'Laboratoires', 'prefix' => 'admin', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Laboratoires.modified' => 'DESC',
+                    'Laboratoires.code_laboratoire' => 'ASC'
+                ]
+            ];
+            $laboratoires = $this->paginate($query);
             $this->viewBuilder()->layout('adminLayout');
-            $laboratoires = $this->paginate($this->Laboratoires);
             $this->set(compact('laboratoires'));
             $this->set('_serialize', ['laboratoires']);
         }
@@ -138,20 +163,4 @@ class LaboratoiresController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-
-    public function search(){
-        if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-
-            $query = $this->Laboratoires->find()->order(['code_laboratoire' => 'DESC']);
-            $params  = $this->request->data(['params']);
-            $conditions = $this->Search->searchConditions($params, 'Laboratoires');
-            $datas = $this->paginate($query->where($conditions));
-
-            $this->viewBuilder()->layout('ajax');
-            $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
-        }
-    }
 }

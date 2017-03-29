@@ -3,6 +3,8 @@ namespace App\Controller\Amazonie;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Sites Controller
@@ -23,13 +25,55 @@ class SitesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
-        $sites = $this->paginate($this->Sites);
+    public function index(){
+        $query = $this->Sites->find()->where(['Sites.source_id' => 2]);
+        if($this->request->is('ajax')){
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Sites.name' => 'asc'
+                ]
+            ];
 
-        $this->set(compact('sites'));
-        $this->set('_serialize', ['sites']);
-        $this->viewBuilder()->layout('amazonieLayout');
+            if(count($this->request->data(['params']) != 0)){
+                $params  = $this->request->data(['params']);
+                $conditions = $this->Search->searchConditions($params, 'Sites');
+                $datas = $this->paginate($query->andWhere($conditions));
+            }else{
+                $datas = $this->paginate($query);
+            }
+
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
+            $this->set(compact('datas'));
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
+        }else{
+            $this->set('searchUrl', Router::url(['controller' => 'Sites', 'prefix' => 'amazonie', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Sites.name' => 'asc'
+                ]
+            ];
+            $sites = $this->paginate($query);
+            $this->viewBuilder()->layout('amazonieLayout');
+            $this->set(compact('sites'));
+            $this->set('_serialize', ['sites']);
+            $this->set('activesite', true);
+        }
     }
 
     /**
@@ -47,6 +91,7 @@ class SitesController extends AppController
 
         $this->set('site', $site);
         $this->set('_serialize', ['site']);
+        $this->set('activesite', true);
         $this->viewBuilder()->layout('amazonieLayout');
     }
 

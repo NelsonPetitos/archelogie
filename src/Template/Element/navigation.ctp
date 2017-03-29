@@ -14,22 +14,16 @@
             <?php endif; ?>
         >
             <a href="<?= Cake\Routing\Router::url(['_name' => 'accueil']); ?>">Accueil</a>
-            <ul class="dropdown__menu__list dropdown__double">
-                <!--<li><a href="<?= Cake\Routing\Router::url(['_name' => 'accueil']); ?>"></a></li>-->
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Objectifs</a></li>
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Lieux d'étude</a></li>
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Projets en cours</a></li>
-            </ul>
         </li>
         <li
             <?php if($activeClass == 4): ?>
             class="menu__active"
             <?php endif; ?>
         >
-            <a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">L'actualité</a>
+            <a href="<?= Cake\Routing\Router::url(['_name' => 'actualites_evenements']); ?>">L'actualité</a>
             <ul class="dropdown__menu__list dropdown__simple__plus">
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Les évènements</a></li>
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Les publications</a></li>
+                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'actualites_evenements']); ?>">Les évènements</a></li>
+                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'actualites_publications']); ?>">Les publications</a></li>
             </ul>
         </li>
 
@@ -44,8 +38,7 @@
                     <a href="<?= Cake\Routing\Router::url(['_name' => 'afriquehome']); ?>">L'Afrique Centrale</a>
                 </li>
                 <li>
-                    <a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Le bassin amazonien</a>
-                    <!--<?= Cake\Routing\Router::url(['_name' => 'amazoniehome' ]); ?>-->
+                    <a href="<?= Cake\Routing\Router::url(['_name' => 'amazoniehome']); ?>">Le bassin amazonien</a>
                 </li>
             </ul>
         </li>
@@ -55,26 +48,7 @@
             <?php endif; ?>
         >
             <a href="<?= Cake\Routing\Router::url(['_name' => 'partenaires']); ?>">Partenariats</a>
-            <ul class="dropdown__menu__list dropdown__simple__plus">
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'partenaires']); ?>">Nos partenaires</a></li>
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Devenez partenaire</a></li>
-                <li><a href="<?= Cake\Routing\Router::url(['_name' => 'sorry']); ?>">Autre collaboration</a></li>
-            </ul>
-            <!--<ul class="dropdown__menu__list dropdown__menu__list__img">-->
-                <!--<li><a href="http://www.parcsgabon.org/" target="_blank"><?= $this->Html->image('logo-anpn.png', ['alt' => 'Loge ANPN', 'class' => 'logo__menu']); ?> ANPN</a></li>-->
-                <!--<li><a href="http://www.mae.u-paris10.fr/archam/" target="_blank"><?= $this->Html->image('logo-archam.jpg', ['alt' => 'Loge ARCHAN', 'class' => 'logo__menu']); ?> ARCHAM</a></li>-->
-                <!--<li><a href="http://www.crex-group.org/" target="_blank"><?= $this->Html->image('logo-crex.jpg', ['alt' => 'Loge CREX', 'class' => 'logo__menu']); ?> CREX</a></li>-->
-                <!--<li><a href="http://www.paloc.fr" target="_blank"><?= $this->Html->image('logo-ird.jpg', ['alt' => 'Loge IRD', 'class' => 'logo__menu']); ?>IRD-UMR208</a></li>-->
-                <!--<li><a href="http://www.uy1.uninet.cm/" target="_blank"><?= $this->Html->image('logo-uy1.jpg', ['alt' => 'Loge UY1', 'class' => 'logo__menu']); ?> UY1</a></li>-->
-            <!--</ul>-->
         </li>
-        <!--<li-->
-            <!--<?php if($activeClass == 3): ?>-->
-                <!--class="menu__active"-->
-            <!--<?php endif; ?>-->
-        <!--&gt;-->
-            <!--<a href="<?= Cake\Routing\Router::url(['_name' => 'liens']); ?>">Liens</a>-->
-        <!--</li>-->
         <li
             <?php if($activeClass == 6): ?>
                 class="menu__active"
@@ -102,3 +76,19 @@
         </li>
     </ul>
 </div>
+
+<div class="flyer_container" id="flyer_container">
+    <button id="acheo_flyer_button">
+        <span class="glyphicon glyphicon-triangle-left"></span>
+    </button>
+    <p>Pour citer Cette base de données :</p>
+    <ul>
+        <li>Dans sa globalité : XXXXX</li>
+        <li>Base de données Afrique : XXXXX</li>
+        <li>Base de données Amazonie : XXXXXX»</li>
+    </ul>
+</div>
+
+
+
+

@@ -57,6 +57,23 @@ Router::scope('/', function (RouteBuilder $routes) {
         ['_name' => 'accueil']
     );
 
+    $routes->connect(
+        '/actualites-evenement',
+        ['controller' => 'Pages', 'action' => 'display', 'evenements'],
+        ['_name' => 'actualites_evenements']
+    );
+
+    $routes->connect(
+        '/contacts',
+        ['controller' => 'Pages', 'action' => 'display', 'contacts'],
+        ['_name' => 'contacts']
+    );
+
+    $routes->connect(
+        '/actualites-publications',
+        ['controller' => 'Pages', 'action' => 'display', 'publications'],
+        ['_name' => 'actualites_publications']
+    );
 
     $routes->connect(
         '/sorry',

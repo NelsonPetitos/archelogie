@@ -1,3 +1,5 @@
+<?= $this->start('title'); ?>Oops sorry<?= $this->end(); ?>
+
 <?= $this->start('Navigation'); ?>
     <?= $this->element('navigation', ['activeClass' => 3]); ?>
 <?= $this->end(); ?>
@@ -11,7 +13,8 @@
         <div class="col-lg-12">
             <h1 class="page-header">Oooops</h1>
             <ol class="breadcrumb">
-                <li>Maintenance</li>
+                <li><a class="text-center" href="<?= Cake\Routing\Router::url(['_name' => 'accueil']); ?>">Site</a></li>
+                <li>404</li>
             </ol>
         </div>
     </div>
@@ -21,7 +24,7 @@
     <div class="col-md-12">
         <?= $this->Html->image('sorry.jpg', ['alt' => 'Sorry image']); ?>
         <span style="font-size: 32px; font-family: 'Comic Sans MS', Arial, Helvetica, sans-serif">
-            Désolés lien en cours de maintenance.<a  href="#" onclick="event.preventDefault(); history.back();" > Précédent</a>
+            Lien en cours de maintenance.<a  href="#" onclick="event.preventDefault(); history.back();" > Précédent</a>
         </span>
 
     </div>

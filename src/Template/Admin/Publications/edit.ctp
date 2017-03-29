@@ -9,27 +9,26 @@
                 <div class="col-md-12">
                     <?= $this->Form->create($publication) ?>
                     <?php
-                        echo $this->Form->input('annee', ['label' => 'Année de publication']);
                         echo $this->Form->input('title', ['label' => 'Titre de la publication']);
                         echo $this->Form->input('reference', ['label' => 'Reférence bibliographique']);
-                        echo $this->Form->input('source_id', ['options' => $sources, 'empty' => true]);
-                        echo $this->Form->select('auteurs._ids', $auteurs, ['multiple' => 'checkbox']);
+                        echo $this->Form->input('annee', ['label' => 'Année de publication']);
+                        echo $this->Form->input('source_id', ['label' => 'Source des données', 'options' => $sources, 'empty' => true]);
+
                     ?>
+                    <label>Auteur(s)</label>
+                    <?php echo $this->Form->select('auteurs._ids', $auteurs, ['multiple' => true, 'class' => 'auteur-select-list']);?>
+
                 </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-warning']) ?>
             <?= $this->Form->button('Valider', ['type' => 'submit']) ?>
             <?= $this->Form->end() ?>
-            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-warning']) ?>
-            <?= $this->Form->postLink(
-            __('Supprimer'),
-            ['action' => 'delete', $publication->id],
-            ['class' => 'btn btn-danger', 'confirm' => __('Supprimer publication ?')]
-            )
-            ?>
+
         </div>
     </div>
 </section>
+

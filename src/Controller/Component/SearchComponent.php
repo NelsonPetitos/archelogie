@@ -31,6 +31,8 @@ class SearchComponent extends Component {
 
             if ($param['typedata'] == 'string'){
                 $conditions[ "LOWER(".$param['field'].") ".$param['operation'] ] = "%".$param['value']."%";
+            }elseif($param['typedata'] == 'numeric'){
+                $conditions[ $param['field']." ".$param['operation'] ] = $param['value'];
             }else{
                 $conditions[ $param['field']." ".$param['operation'] ] = $param['value'];
             }

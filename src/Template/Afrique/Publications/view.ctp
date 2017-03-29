@@ -17,7 +17,7 @@
 <?= $this->end(); ?>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
         <div class="panel panel-info">
             <div class="panel-heading">Publication</div>
             <div class="panel-body">
@@ -39,7 +39,7 @@
 
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <div class="panel panel-info">
             <div class="panel-heading">Auteurs</div>
             <div class="panel-body">

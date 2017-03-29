@@ -9,9 +9,10 @@
 <?= $this->element('loader'); ?>
 
 <input type="hidden" id="maximum" value="<?= $maximum ?>" />
+<input type="hidden" id="minimum" value="<?= $minimum ?>" />
+<input type="hidden" id="mapregion" value="afrique" />
 <input type="hidden" id="iconrougeurl" value="<?= $this->Url->image('cercle-rouge-icone-5972-16.png'); ?>" />
 <input type="hidden" id="iconjauneurl" value="<?= $this->Url->image('cercle-jaune-icone-9126-16.png'); ?>" />
-<input type="hidden" id="minimum" value="<?= $minimum ?>" />
 <input type="hidden" id="mapdatasurl" value="<?= Cake\Routing\Router::url(['controller' => 'Datations', 'action' => 'getSessionDatations', 'prefix' => 'afrique']);?>"/>
 <input type="hidden" id="ajaxSliderUrl" value="<?= Cake\Routing\Router::url(['controller' => 'Datations', 'action' => 'cartographie', 'prefix' => 'afrique']);?>"/>
 
@@ -92,7 +93,7 @@
 </div>
 
 
-<?php $index = 0; ?>
+<?php $index = 0; $mapdatations = []; ?>
 <?php foreach ($datations as $datation): ?>
 <?php $mapdatations[$index++] =  $datation ; ?>
 <?php endforeach; ?>

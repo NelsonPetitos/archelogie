@@ -14,10 +14,7 @@ use Cake\View\View;
 class DatationsController extends AppController
 {
 
-
     public $helpers = array('GoogleMap');
-
-
 
 
     public function beforeFilter(Event $event)
@@ -123,8 +120,10 @@ class DatationsController extends AppController
 
 
 
-
-
+    /**
+     * @param \Cake\Network\Request\null
+     * @return \Cake\Network\Response|null
+     */
     public  function cartographie() {
         $query = $this->Datations->find()->where(['Datations.source_id' => 1]);
         $max = $query->select(['date_bp'])->max('date_bp')->toArray();
@@ -134,7 +133,7 @@ class DatationsController extends AppController
             $val =  ($max['date_bp'] + $min['date_bp']) / 2;
 
             $datations = $query->select(['id', 'date_bp', 'erreur_standard', 'date_calibree'])
-                                ->contain   (['Sites' => function($q){ return $q->select(['id', 'name', 'latitude', 'longitude']);}])
+                                ->contain(['Sites' => function($q){ return $q->select(['id', 'name', 'latitude', 'longitude']);}])
                                 ->andWhere(function($exp, $q) use ($val){
                                     $bornsup = $q->newExpr()->add('Datations.date_bp + Datations.erreur_standard');
                                     $borninf = $q->newExpr()->add('Datations.date_bp - Datations.erreur_standard');
@@ -203,6 +202,8 @@ class DatationsController extends AppController
 
         }
     }
+
+
 
 
     /**

@@ -9,20 +9,22 @@
                 <div class="col-md-12">
                     <?= $this->Form->create($publication) ?>
                     <?php
-                        echo $this->Form->input('annee', ['label' => 'Année de publication']);
                         echo $this->Form->input('title', ['label' => 'Titre publication']);
                         echo $this->Form->input('reference', ['label' => 'Reférence bibliographique']);
-                        echo $this->Form->select('auteurs._ids', $auteurs, ['multiple' => 'checkbox']);
+                        echo $this->Form->input('annee', ['label' => 'Année de publication']);
+                        echo $this->Form->input('source_id', ['label' => 'Source des données', 'options' => $sources, 'empty' => true]);
                     ?>
+                    <label>Auteur(s)</label>
+                    <?php echo $this->Form->select('auteurs._ids', $auteurs, ['multiple' => true, 'class' => 'auteur-select-list']);?>
                 </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
             <?= $this->Form->button('Valider', ['type' => 'submit']) ?>
             <?= $this->Form->end() ?>
-            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 </section>

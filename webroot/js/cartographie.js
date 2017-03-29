@@ -11,8 +11,9 @@ var map, bulle, i, j;
 
 
 //Initialisation de la carte google map
-function initMap() {
-    var myLatlng = new google.maps.LatLng(2.15055,13.34027);
+function initMap(lat, lng) {
+    // var myLatlng = new google.maps.LatLng(2.15055,13.34027);
+    var myLatlng = new google.maps.LatLng(lat,lng);
     map = new google.maps.Map(document.getElementById('map__cartographie'), {
         center: myLatlng,
         zoom: 4,
@@ -24,48 +25,56 @@ function initMap() {
 
 //Initialise some generic variables
 function setMinMaxMiddle() {
-    values.min = parseInt(document.getElementById('minimum').value);
-    values.max = parseInt(document.getElementById('maximum').value);
-    // console.log(chemin);
 
-    if(typeof values.max !== 'undefined' && typeof values.min !== 'undefined'){
-        if(values.max < values.min){
-            var interm = values.max;
-            values.max = values.min;
-            values.min = interm;
+    if(document.getElementById('minimum').value && document.getElementById('maximum').value){
+        values.min = parseInt(document.getElementById('minimum').value);
+        values.max = parseInt(document.getElementById('maximum').value);
+        // console.log(chemin);
+
+        if(typeof values.max !== 'undefined' && typeof values.min !== 'undefined'){
+            if(values.max < values.min){
+                var interm = values.max;
+                values.max = values.min;
+                values.min = interm;
+            }
+            values.middle = (values.max + values.min)/2;
+            values.valeurMaxCumul = (values.max + values.min)/4;
+            values.valeurMinCumul = 3 * (values.max + values.min)/4;
         }
-        values.middle = (values.max + values.min)/2;
-        values.valeurMaxCumul = (values.max + values.min)/4;
-        values.valeurMinCumul = 3 * (values.max + values.min)/4;
+    }else{
+        console.log('Nothing to init the params');
     }
+
     return ;
 }
 
 
 
 function getMapDatas(){
-    var chemin = document.getElementById('mapdatasurl').value;
-    if(typeof chemin !== 'undefined'){
-        $.ajax({
-            url: chemin,
-            type: 'post',
-            dataType: 'json',
-            update: 'carte',
-
-            success: function (data) {
-                console.log('Tout est ok')
-                afficher_marqueur(data.datas, values.middle);
-                return ;
-            },
-
-            error: function (data, statut, erreur) {
-                alert('Une erreur c\'est produite');
-                return;
-            }
-        });
+    if(document.getElementById('mapdatasurl')){
+        var chemin = document.getElementById('mapdatasurl').value;
+        console.log(chemin);
+        if(typeof chemin !== 'undefined'){
+            $.post(chemin)
+             .done(function(data) {
+                 // alert( "second success" );
+                 console.log('Tout est ok')
+                 afficher_marqueur(data.datas, values.middle);
+                 return ;
+             })
+             .fail(function(data, statut, erreur) {
+                 console.log('Une erreur c\'est produite');
+                 console.log(data);
+                 console.log(statut);
+                 console.log(erreur);
+                 return;
+             });
+        }else{
+            console.log('Pas de hidden input avec l\'url pour les datas');
+            return;
+        }
     }else{
-        console.log('Pas de hidden input avec l\'url pour les datas');
-        return;
+        console.log('No url define to get map data');
     }
 }
 
@@ -132,22 +141,22 @@ function afficher_marqueur(datas, valeur) {
                 '<table cellspacing="2" cellpadding="4" bgcolor="FFFFFF">' +
                     '<tr>' +
                         '<td>Localisation : </td>' +
-                        '<td>' + infos.site.latitude + ' , ' + infos.site.longitude +
+                        '<td style="text-align: right">' + infos.site.latitude + ' , ' + infos.site.longitude +
                     '</tr>' +
                     '<tr>' +
                         '<td>Nom du site : </td>' +
-                        '<td>' + infos.site.name + '</td>' +
+                        '<td style="text-align: right">' + infos.site.name + '</td>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>Date before present : </td>' +
-                    '<td>' + infos.date_bp + '</td></tr>' +
+                        '<td>Date before present : </td>' +
+                        '<td style="text-align: right">' + infos.date_bp + '</td></tr>' +
                     '<tr>' +
                         '<td>Erreur standard : </td>' +
-                        '<td>' + infos.erreur_standard + '</td>' +
+                        '<td style="text-align: right">' + infos.erreur_standard + '</td>' +
                     '</tr>' +
                     '<tr>' +
                         '<td>Date calibrée : </td>' +
-                        '<td>' + infos.date_calibree + '</td>' +
+                        '<td style="text-align: right">' + infos.date_calibree + '</td>' +
                     '</tr>' +
                 '</table>',
 //size : new google.maps.Size(120, 120),
@@ -159,7 +168,8 @@ function afficher_marqueur(datas, valeur) {
         });
     }
     //Enlever si possible le slider
-    hideLoader();
+    setTimeout(hideLoader(), 3000);
+    // hideLoader();
 }
 
 
@@ -309,7 +319,23 @@ function appelAjax() {
 //fonction de mise à jour de la carte lors de la première visite
 $(document).ready(function () {
 //Initialisation de la carte google map
-    initMap();
+    if(document.getElementById('mapregion')){
+        var mapregion = document.getElementById('mapregion').value;
+        var lat, lng;
+        if(mapregion === 'afrique'){
+            lat = 2.15055;
+            lng = 13.34027;
+        }else if(mapregion === 'amazonie'){
+            lat = 2.15055;
+            lng = -64.145810;
+        }else{
+            console.log('Unknown region to draw map');
+            return;
+        }
+        initMap(lat, lng);
+    }else{
+        console.log('No map to draw');
+    }
 //Initiation des variables pour la fabication des slidersTest
     $(".bloc_saisie_cumul").fadeOut();
     $('input[name="cumul"][value="non"]').prop("checked", true);

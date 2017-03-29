@@ -1,0 +1,89 @@
+
+/*---------------------------------------------*\
+/                                               /
+/         Le loader de la carte                 /
+/                                               /
+/*---------------------------------------------*/
+
+
+
+.wrap_loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+}
+
+.text_loader {
+    color: #3c8dbc;
+    display: inline-block;
+    padding-top: 20px;
+    margin-left: 40px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+.bounceball {
+    position: absolute;
+    display: inline-block;
+    height: 40px;
+    width: 30px;
+    top: 40%;
+    left: 40%;
+}
+.bounceball:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #3c8dbc;
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-animation: bounce 500ms alternate infinite ease;
+    animation: bounce 500ms alternate infinite ease;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
+}

@@ -1,3 +1,5 @@
+<?= $this->start('title'); ?>Accueil<?= $this->end(); ?>
+
 <?= $this->start('Navigation'); ?>
     <?= $this->element('navigation',['activeClass' => 1]); ?>
 <?= $this->end(); ?>
@@ -11,9 +13,9 @@
 <?= $this->start('Breadcrumb'); ?>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Plateforme des datations archéologiques intertropicales </h1>
+            <h3 class="page-header"> Plateforme des datations archéologiques intertropicales </h3>
             <ol class="breadcrumb">
-                <li><a class="text-center" href="<?= Cake\Routing\Router::url(['_name' => 'accueil']); ?>">Site</a>
+                <li><a class="text-center" href="<?= Cake\Routing\Router::url(['_name' => 'accueil']); ?>"><span class="glyphicon glyphicon-home"></span> Site</a>
                 </li>
                 <li class="active">Présentation</li>
             </ol>
@@ -24,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8" >
-            <div class="row">
+            <div class="row" style="font-size: 13px; text-align: justify;line-height: 1.5em;">
                 <p>
                     Le site a pour objectif de collectionner les données archéologiques datées de la ceinture intertropicale afin de fournir un outil favorisant l’interdisciplinarité ainsi que l’émergence d’une démarche scientifique tropicaliste.
                 </p>
@@ -95,8 +97,7 @@
                             <div class="map__description__title">Bassin amazonien</div>
                             <div class="map__description__body">Zone géographique des sites archéologiques du bassin amazonien.</div><br/>
                             <div class="map__description_footer">
-                                <!--<?= $this->Html->link('Répartition spatiale des sites', '/amazonie/datations/cartographie', ['class' => 'btn btn-primary']); ?>-->
-                                <?= $this->Html->link('Répartition spatiale des sites', '/sorry', ['class' => 'btn btn-primary']); ?>
+                                <?= $this->Html->link('Répartition spatiale des sites', '/amazonie/datations/cartographie', ['class' => 'btn btn-primary']); ?>
                             </div>
                         </div>
                     </div>
@@ -106,15 +107,20 @@
         </div>
         <div class="col-md-4" >
             <div class="well">
-                <h4>Actualités archéologique</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h5><span class="label label-danger">Actualité</span></h5>
+                <h5 style="line-height: 1.5em;">Message de l’archéologue Dr. Carla Jaimes Betancourt </h5>
+                <p>Chers collègues, Voici le lien de la page web du ...<br/><br/>
+                    <a style="float: right;" href="<?= Cake\Routing\Router::url(['_name' => 'actualites_evenements']); ?>">Voir détails</a>
+                </p>
             </div>
 
             <div class="well">
-                <h4>Actualités archéologique</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h5><span class="label label-success">Publications</span></h5>
+                <h5 style="line-height: 1.5em;">Mise en ligne de chaines Youtube </h5>
+                <p>Pour la chaine "Patrimoines en Afrique Centrale" ...<br/><br/>
+                    <a style="float: right;" href="<?= Cake\Routing\Router::url(['_name' => 'actualites_publications']); ?>">Voir détails</a>
+                </p>
             </div>
-
         </div>
     </div>
 </div>

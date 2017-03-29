@@ -1,3 +1,5 @@
+<?= $this->start('title'); ?>Crédits<?= $this->end(); ?>
+
 <?= $this->start('Navigation'); ?>
     <?= $this->element('navigation', ['activeClass' => 4]); ?>
 <?= $this->end(); ?>

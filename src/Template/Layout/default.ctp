@@ -43,6 +43,8 @@
         <!-- Bootstrap Core JavaScript -->
         <?= $this->Html->script('bootstrap.min'); ?>
 
+        <?= $this->Html->script('common'); ?>
+
         <?= $this->fetch('script') ?>
         <script>
             $('.carousel').carousel({

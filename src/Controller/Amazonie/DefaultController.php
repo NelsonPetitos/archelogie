@@ -17,6 +17,6 @@ class DefaultController extends AppController
     {
         $this->viewBuilder()->layout('amazonieLayout');
         $this->viewBuilder()->template('index');
-        $this->set('accueil', '');
+        $this->set('accueil', "list-group-item active");
     }
 }

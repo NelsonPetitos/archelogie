@@ -26,6 +26,19 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+
+/*select2 list style*/
+.auteur-select-list{
+  width:100% !important;
+}
+
+.space-right{
+  margin-right: 10px;
+}
+
+
+
 /* Layout */
 .wrapper {
   min-height: 100%;

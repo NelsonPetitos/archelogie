@@ -19,25 +19,25 @@
 
         <?= $this->element('navigation',['activeClass' => 5]); ?>
 
-        <?= $this->fetch('Carousel'); ?>
-
         <!-- Page Content -->
         <div class="container">
-            <div class="wrap" id="archeologie_loader">
+            <!--Display the loader of the page-->
+            <div class="wrap_loader" id="archeologie_loader">
                 <div class="loading">
                     <div class="bounceball"></div>
                     <div class="text">Chargement ...</div>
                 </div>
             </div>
+            
             <!-- Ajouter les messages flash-->
             <?= $this->Flash->render() ?>
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Plateforme des datations archéologiques d'Afrique Centrale</h2>
+                    <h3 class="page-header">Plateforme des datations archéologiques d'Afrique Centrale</h3>
                     <ol class="breadcrumb">
                         <li>
-                            <?= $this->Html->link('Afrique Centrale', '/afrique', ['class' => '']); ?>
+                            <?= $this->Html->link('<span class="glyphicon glyphicon-home"></span> Afrique Centrale', '/afrique', ['escape' => false]); ?>
                         </li>
                         <?= $this->fetch('Breadcrumb'); ?>
                     </ol>
@@ -97,6 +97,7 @@
         <?= $this->Html->script('jquery-ui'); ?>
         <?= $this->Html->script('jquery-ui-slider-pips'); ?>
         <?= $this->Html->script('archeologie'); ?>
+        <?= $this->Html->script('common'); ?>
 
         <!-- Bootstrap Core JavaScript -->
         <?= $this->Html->script('bootstrap.min'); ?>

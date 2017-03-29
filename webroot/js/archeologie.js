@@ -1,6 +1,9 @@
 /**
  * Created by ndenelson on 04/01/2017.
  */
+//    Declare une variable d'options d'affichage des dates
+var options = {day: "numeric", month: "numeric", year: "numeric", hour: 'numeric', minute: 'numeric'}
+
 function setEvenListenSearchInputText() {
     var textFields = selectInput();
     for(var i = 0; i < textFields.length; i++){
@@ -25,7 +28,7 @@ function attachPagination() {
         // request_url += '&limit='+$('#paginateLimit').val();
         console.log('Lien ajax : '+request_url);
         ajaxPageLoader(request_url);
-        return false;
+        return ;
     })
 }
 
@@ -66,8 +69,9 @@ function displaySiteSearchResults(sites, isAdmin) {
         $('#data_table_body').html('<tr><td colspan="6" style="text-align: center; font-size: 14px;">Aucun site pour cette recherche</td></tr>');
     }else {
         $.each(sites, function( index, site ) {
+            var formname = "post_"+index;
             var apenstr =
-                '<tr onclick="voirDetail(\'sites/view/'+site.id+'\')">' +
+                '<tr>' +
                     '<td>'+((site.name == null)? "":site.name)+'</td>' +
                     '<td>'+((site.type == null)?"":site.type)+'</td>' +
                     '<td>'+((site.contry == null)?"":site.contry)+'</td>' +
@@ -77,10 +81,13 @@ function displaySiteSearchResults(sites, isAdmin) {
             if(isAdmin){
                 apenstr +=
                     '<td class="action">' +
-                        ' <a href="sites/view/'+site.id+'">Détails</a> '+
-                        ' <a href="sites/edit/'+site.id+'">Modifier</a> '+
-                        ' <a href="sites/delete/'+site.id+'">Supprimer</a> '+
+                        '<a href="sites/view/'+site.id+'" class="space-right"><span class="glyphicon glyphicon-search"></span></a> '+
+                        '<a href="sites/edit/'+site.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#" onclick="if(confirm(\'Voulez vous supprimer '+site.name+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="sites/delete/'+site.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
+            }else{
+                apenstr = apenstr.replace('<tr>', '<tr onclick="voirDetail(\'sites/view/'+site.id+'\')">');
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -93,24 +100,24 @@ function displaySiteSearchResults(sites, isAdmin) {
 //Afficher les résultats d'une recherche sur les PUBLICATIONS
 function displayPublicationSearchResults(publications, isAdmin) {
     if(publications.length == 0){
-        $('#data_table_body').html('<tr><td colspan="3" style="text-align: center; font-size: 14px;">Aucune publication pour cette recherche</td></tr>');
+        $('#data_table_body').html('<tr><td colspan="4" style="text-align: center; font-size: 14px;">Aucune publication pour cette recherche</td></tr>');
     }else {
         $.each(publications, function( index, publication ) {
+            var formname = "post_"+index;
             var apenstr =
-                '<tr onclick="voirDetail(\'publications/view/'+publication.id+'\')">' +
+                '<tr>' +
                     '<td>'+((publication.title == null)?"":publication.title)+'</td>' +
                     '<td>'+((publication.annee == null)?"":publication.annee)+'</td>' +
                     '<td>'+((publication.reference == null)?"":publication.reference)+'</td>';
             if(isAdmin){
                 apenstr +=
-                    '<td>'+((publication.created == null)?"":publication.created)+'</td>' +
-                    '<td>'+((publication.modified == null)?"":publication.modified  )+'</td>' +
                     '<td class="action">' +
-                        ' <a href="publications/view/'+publication.id+'">Détails</a> '+
-                        ' <a href="publications/edit/'+publication.id+'">Modifier</a> '+
-                        ' <a href="publications/delete/'+publication.id+'">Supprimer</a>'+
+                        '<a href="publications/edit/'+publication.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
-
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="publications/delete/'+publication.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
+            }else{
+                apenstr = apenstr.replace('<tr>', '<tr onclick="voirDetail(\'publications/view/'+publication.id+'\')">');
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -122,21 +129,25 @@ function displayPublicationSearchResults(publications, isAdmin) {
 //Afficher les résultats d'une recherche sur les AUTEURS
 function displayAuteurSearchResults(auteurs, isAdmin) {
     if(auteurs.length == 0){
-        $('#data_table_body').html('<tr><td colspan="3" style="text-align: center; font-size: 14px;">Aucun auteur pour cette recherche</td></tr>');
+        $('#data_table_body').html('<tr><td colspan="2" style="text-align: center; font-size: 14px;">Aucun auteur pour cette recherche</td></tr>');
     }else {
         $.each(auteurs, function( index, auteur ) {
+            var formname = "post_"+index;
+            // auteur.created = new Date(auteur.created);
+            // auteur.modified = new Date(auteur.modified);
+            // options = {day: "numeric", month: "numeric", year: "numeric", hour: 'numeric', minute: 'numeric'}
             var apenstr =
                 '<tr>' +
-                    '<td>'+auteur.name+'</td>' +
-                    '<td>'+((auteur.created == null)? "" : auteur.created)+'</td>' +
-                    '<td>'+((auteur.modified == null)? "" : auteur.modified)+'</td>' ;
+                    '<td>'+auteur.name+'</td>' ;
+                    // '<td>'+((auteur.created == null)? "" : auteur.created.toLocaleString('en-GB', options))+'</td>' +
+                    // '<td>'+((auteur.modified == null)? "" : auteur.modified.toLocaleString('en-GB', options))+'</td>' ;
             if(isAdmin){
                 apenstr +=
                     '<td class="action">' +
-                        ' <a href="auteurs/view/'+auteur.id+'">Détails</a> '+
-                        ' <a href="auteurs/edit/'+auteur.id+'">Modifier</a> '+
-                        ' <a href="auteurs/delete/'+auteur.id+'">Supprimer</a> '+
+                        '<a href="auteurs/edit/'+auteur.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer '+auteur.name+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="auteurs/delete/'+auteur.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -152,19 +163,18 @@ function displayLaboratoireSearchResults(laboratoires, isAdmin) {
         $('#data_table_body').html('<tr><td colspan="3" style="text-align: center; font-size: 14px;">Aucun laboratoire pour cette recherche</td></tr>');
     }else {
         $.each(laboratoires, function( index, laboratoire ) {
+            var formname = "post_"+index;
             var apenstr =
                 '<tr>' +
                     '<td>'+((laboratoire.code_laboratoire == null)? "" : laboratoire.code_laboratoire)+'</td>' +
                     '<td>'+((laboratoire.description == null)? "" : laboratoire.description)+'</td>' ;
             if(isAdmin){
                 apenstr +=
-                    '<td>'+((laboratoire.created == null)? "" : laboratoire.created)+'</td>' +
-                    '<td>'+((laboratoire.modified == null)? "" : laboratoire.modified)+'</td>'+
                     '<td class="action">' +
-                    ' <a href="laboratoires/view/'+laboratoire.id+'">Détails</a> '+
-                    ' <a href="laboratoires/edit/'+laboratoire.id+'">Modifier</a> '+
-                    ' <a href="laboratoires/delete/'+laboratoire.id+'">Supprimer</a> '+
+                        ' <a href="laboratoires/edit/'+laboratoire.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                    '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer '+laboratoire.code_laboratoire+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="laboratoire/delete/'+laboratoire.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -266,7 +276,7 @@ function ajaxPageLoader(request_url) {
         request_url += '?page=1&limit='+limit;
     }
     params = getSearchParams();
-    console.log(request_url)
+    console.log(params)
     $('#data_table_body').html('');
     $('#pagination_box').html('');
 
@@ -300,7 +310,7 @@ function ajaxPageLoader(request_url) {
 
 
 function getSearchParams() {
-    var params = [];
+    var params = [], operat;
     var textFields = selectInput();
     for(var i = 0; i < textFields.length; i++){
         var field = textFields[i].dataset.opname;
@@ -309,27 +319,39 @@ function getSearchParams() {
         var val = textFields[i].value.toLowerCase();
         var typedata = textFields[i].dataset.datatype;
 
-        if(field){
-            var operat = document.getElementById(field).value;
+        if(document.getElementById(field)){
+            operat = document.getElementById(field).value;
+        }else{
+            console.log('No field '+field)
         }
         if(val){
             //J controle le fait de mettre une chaine de caractere dans une entier
             if(typedata == 'number'){
-                if(!(val = parseFloat(val))){
-                    val = 0;
+                if(isNaN(parseFloat(val))){
+                    val = null;
                     textFields[i].value  = val;
                 }
             }
-            params.push(
-                {
-                    typedata: typedata,
-                    field: field,
-                    value: val,
-                    operation: operat,
-                    table: tab,
-                    assoc: externField
+            if(typedata == 'date'){
+                if(isNaN(Date.parse(val))){
+                    val = null;
+                    textFields[i].value = val;
+                }else{
+                    val = new Date(val);
                 }
-            )
+            }
+            if(val != null){
+                params.push(
+                    {
+                        typedata: typedata,
+                        field: field,
+                        value: val,
+                        operation: operat,
+                        table: tab,
+                        assoc: externField
+                    }
+                )
+            }
         }
     }
     return params;
@@ -364,40 +386,43 @@ function setPageToOne(url) {
 }
 
 function drawMap() {
-    var lalat = parseFloat($('#lalat').html());
-    var lalong = parseFloat($('#lalong').html());
-    var sitename = $('#sitename').html();
+    if($('#lalat').html() && $('#lalong').html()){
+        // console.log('on peut dessiner la carte');
+        var lalat = parseFloat($('#lalat').html());
+        var lalong = parseFloat($('#lalong').html());
+        var sitename = $('#sitename').html();
 
-    console.log(lalat);
-    console.log(lalong);
-    if(typeof lalat !== 'undefined' && typeof lalong !== 'undefined'){
-        var myLatlng = new google.maps.LatLng(lalat, lalong);
-        var carte = new google.maps.Map(document.getElementById('map__cartographie'), {
-            center: myLatlng,
-            zoom: 8,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
-        });
-        var myMarker = new google.maps.Marker({
-            position: myLatlng,
-            map: carte,
-            title: sitename
-        })
-        google.maps.event.addListener(myMarker, 'click', function () {
-            bulle = new google.maps.InfoWindow({
-                content:
-                '<table cellspacing="2" cellpadding="4" bgcolor="FFFFFF">' +
-                    '<tr>' +
-                        '<td style="text-decoration: underline; font-weight: bold;">Site : </td>' +
-                        '<td style="padding-left: 5px;">'+sitename+'</td>'+
-                    '</tr>' +
-                '</table>',
-                zIndex: -20,
-                disableAutoPan: false
+        // console.log(lalat);
+        // console.log(lalong);
+        if(typeof lalat !== 'undefined' && typeof lalong !== 'undefined') {
+            var myLatlng = new google.maps.LatLng(lalat, lalong);
+            var carte = new google.maps.Map(document.getElementById('map__cartographie'), {
+                center: myLatlng,
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
             });
-            bulle.open(this.getMap(), this);
-        });
+            var myMarker = new google.maps.Marker({
+                position: myLatlng,
+                map: carte,
+                title: sitename
+            })
+            google.maps.event.addListener(myMarker, 'click', function () {
+                bulle = new google.maps.InfoWindow({
+                    content: '<table cellspacing="2" cellpadding="4" bgcolor="FFFFFF">' +
+                    '<tr>' +
+                    '<td style="text-decoration: underline; font-weight: bold;">Site : </td>' +
+                    '<td style="padding-left: 5px;">' + sitename + '</td>' +
+                    '</tr>' +
+                    '</table>',
+                    zIndex: -20,
+                    disableAutoPan: false
+                });
+                bulle.open(this.getMap(), this);
+            });
+        }
+    }else{
+        // console.log('On ne peut pas dessiner la carte');
     }
-
 }
 
 $('#paginateLimit').on('change', function() {
@@ -412,4 +437,7 @@ $(document).ready(function () {
     setEvenListenSearchInputText();
     attachPagination();
     drawMap();
+    $(".auteur-select-list").select2({
+        placeholder: 'Saisir pour rechercher et selectionner le(s) auteur(s)'
+    });
 })

@@ -141,19 +141,4 @@ class ObjetsController extends AppController
     }
 
 
-    public function search(){
-        if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-
-            $query = $this->Objets->find()->order(['name' => 'DESC']);
-            $params  = $this->request->data(['params']);
-            $conditions = $this->Search->searchConditions($params, 'Objets');
-            $datas = $this->paginate($query->where($conditions));
-
-            $this->viewBuilder()->layout('ajax');
-            $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
-        }
-    }
 }

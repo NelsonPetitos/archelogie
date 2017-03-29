@@ -25,8 +25,7 @@ class SitesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
         $query = $this->Sites->find()->where(['Sites.source_id' => 1]);
         if($this->request->is('ajax')){
             //set the pagination informations
@@ -61,7 +60,7 @@ class SitesController extends AppController
             $this->set(compact('pagination'));
             $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Sites', 'prefix' => 'afrique', '?' => ['page' => 1],]));
+            $this->set('searchUrl', Router::url(['controller' => 'Sites', 'prefix' => 'afrique', '?' => ['page' => 1]]));
             $this->paginate = [
                 'limit' => 10,
                 'page' => 1,

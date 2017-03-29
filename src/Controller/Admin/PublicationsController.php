@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Publications Controller
@@ -17,33 +18,60 @@ class PublicationsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
+        $query = $this->Publications->find();
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Publications.modified' => 'DESC',
+                    'Publications.title' => 'ASC'
+                ]
+            ];
 
-            $query = $this->Publications->find()->order(['title' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
-                $conditions = $this->Search->searchConditions($params, 'Publications');
+            $params  = $this->request->data(['params']);
+            if(count($params) != 0){
+                $conditions = $this->Search->searchConditions($params, 'Auteurs');
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Publications', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
+            $this->set('searchUrl', Router::url(['controller' => 'Publications', 'prefix' => 'admin', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Publications.modified' => 'DESC',
+                    'Publications.title' => 'ASC'
+                ]
+            ];
+            $publications = $this->paginate($query);
             $this->viewBuilder()->layout('adminLayout');
-            $publications = $this->paginate($this->Publications);
             $this->set(compact('publications'));
             $this->set('_serialize', ['publications']);
         }
     }
+
+
+
 
     /**
      * View method
@@ -63,6 +91,10 @@ class PublicationsController extends AppController
         $this->set('publication', $publication);
         $this->set('_serialize', ['publication']);
     }
+
+
+
+
 
     /**
      * Add method
@@ -90,6 +122,9 @@ class PublicationsController extends AppController
         $this->set(compact('publication', 'sources', 'auteurs', 'datations'));
         $this->set('_serialize', ['publication']);
     }
+
+
+
 
     /**
      * Edit method
@@ -144,19 +179,4 @@ class PublicationsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function search(){
-        if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-
-            $query = $this->Publications->find()->order(['title' => 'DESC']);
-            $params  = $this->request->data(['params']);
-            $conditions = $this->Search->searchConditions($params, 'Publications');
-            $datas = $this->paginate($query->where($conditions));
-
-            $this->viewBuilder()->layout('ajax');
-            $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
-        }
-    }
 }

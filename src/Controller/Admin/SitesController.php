@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Sites Controller
@@ -17,29 +18,53 @@ class SitesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
+        $query = $this->Sites->find();
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Sites.modified' => 'DESC',
+                    'Sites.name' => 'ASC'
+                ]
+            ];
 
-            $query = $this->Sites->find()->order(['name' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
+            $params  = $this->request->data(['params']);
+            if(count($params) != 0){
                 $conditions = $this->Search->searchConditions($params, 'Sites');
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Sites', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
+            $this->set('searchUrl', Router::url(['controller' => 'Sites', 'prefix' => 'admin', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Sites.modified' => 'DESC',
+                    'Sites.name' => 'ASC'
+                ]
+            ];
+            $sites = $this->paginate($query);
             $this->viewBuilder()->layout('adminLayout');
-            $sites = $this->paginate($this->Sites);
             $this->set(compact('sites'));
             $this->set('_serialize', ['sites']);
         }

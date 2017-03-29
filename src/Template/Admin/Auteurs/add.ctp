@@ -8,19 +8,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <?= $this->Form->create($auteur) ?>
-                    <?php
-                        echo $this->Form->input('name');
-
-                    ?>
+                    <?php echo $this->Form->input('name');?>
                 </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
             <?= $this->Form->button('Valider', ['type' => 'submit']) ?>
             <?= $this->Form->end() ?>
-            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 </section>

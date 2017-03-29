@@ -2,7 +2,9 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+//use Cake\Event\Event;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Auteurs Controller
@@ -17,34 +19,62 @@ class AuteursController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
+        $query = $this->Auteurs->find();
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Auteurs.modified' => 'DESC',
+                    'Auteurs.name' => 'ASC'
+                ]
+            ];
 
-            $query = $this->Auteurs->find()->order(['name' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
+            $params  = $this->request->data(['params']);
+            if(count($params) != 0){
                 $conditions = $this->Search->searchConditions($params, 'Auteurs');
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'emptyLayout';
+            $view->viewPath = '../Template';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->paginate = ['limit' => 10];
+            $this->set('searchUrl', Router::url(['controller' => 'Auteurs', 'prefix' => 'admin', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Auteurs.modified' => 'DESC',
+                    'Auteurs.name' => 'ASC'
+                ]
+            ];
+            $auteurs = $this->paginate($query);
             $this->viewBuilder()->layout('adminLayout');
-            $this->set('searchUrl', Router::url(['controller' => 'Auteurs', '?' => ['page' => 1],]));
-            $auteurs = $this->paginate($this->Auteurs);
             $this->set(compact('auteurs'));
             $this->set('_serialize', ['auteurs']);
         }
-
     }
+
+
+
+
+
 
     /**
      * View method
@@ -64,6 +94,11 @@ class AuteursController extends AppController
         $this->set('auteur', $auteur);
         $this->set('_serialize', ['auteur']);
     }
+
+
+
+
+
 
     /**
      * Add method
@@ -85,10 +120,14 @@ class AuteursController extends AppController
                 $this->Flash->error(__('The auteur could not be saved. Please, try again.'));
             }
         }
-//        $publications = $this->Auteurs->Publications->find('list');
+
         $this->set(compact('auteur'));
         $this->set('_serialize', ['auteur']);
     }
+
+
+
+
 
     /**
      * Edit method
@@ -116,10 +155,14 @@ class AuteursController extends AppController
                 $this->Flash->error(__('The auteur could not be saved. Please, try again.'));
             }
         }
-        $publications = $this->Auteurs->Publications->find('list', ['limit' => 200]);
+        $publications = $this->Auteurs->Publications->find('list', ['limit' => 1]);
         $this->set(compact('auteur', 'publications'));
         $this->set('_serialize', ['auteur']);
     }
+
+
+
+
 
     /**
      * Delete method
@@ -143,20 +186,4 @@ class AuteursController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-
-//    public function search(){
-//        if($this->request->is('ajax')){
-//            $this->RequestHandler->renderAs($this, 'json');
-//            $this->response->type('application/json');
-//
-//            $query = $this->Auteurs->find()->order(['name' => 'DESC']);
-//            $params  = $this->request->data(['params']);
-//            $conditions = $this->Search->searchConditions($params, 'Auteurs');
-//            $datas = $this->paginate($query->where($conditions));
-//
-//            $this->viewBuilder()->layout('ajax');
-//            $this->set(compact('datas'));
-//            $this->set('_serialize', ['datas']);
-//        }
-//    }
 }
