@@ -102,8 +102,8 @@
                             <span class="pull-right-container"><i class="glyphicon glyphicon-chevron-left"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= Cake\Routing\Router::url(['controller' => 'Roles', 'prefix' => 'admin']); ?>"><i class="glyphicon glyphicon-record"></i>Rôles</a></li>
-                            <li><a href="<?= Cake\Routing\Router::url(['controller' => 'Users', 'prefix' => 'admin']); ?>"><i class="glyphicon glyphicon-record"></i>Utilisateurs</a></li>
+                            <li><a href="<?= Cake\Routing\Router::url(['controller' => 'Roles', 'action' => 'index', 'prefix' => 'admin']); ?>"><i class="glyphicon glyphicon-record"></i>Rôles</a></li>
+                            <li><a href="<?= Cake\Routing\Router::url(['controller' => 'Users', 'action' => 'index', 'prefix' => 'admin']); ?>"><i class="glyphicon glyphicon-record"></i>Utilisateurs</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -115,7 +115,7 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!--Display the loader on the page-->
-                <div class="wrap" id="archeologie_loader">
+                <div class="wrap_loader" id="archeologie_loader">
                     <div class="">
                         <div class="bounceball"></div>
                         <div class="text_loader">Chargement...</div>
@@ -146,6 +146,7 @@
         <?= $this->Html->script('jquery'); ?>
         <?= $this->Html->script('jquery.livequery.min'); ?>
         <?= $this->Html->script('bootstrap.min'); ?>
+        <?= $this->Html->script('create_datation'); ?>
         <?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyDQX_r-1uRMngsGXL-Hk_mWkZ6icGBBs2E"); ?>
         <?= $this->Html->script('archeologie'); ?>
         <?= $this->Html->script('app'); ?>

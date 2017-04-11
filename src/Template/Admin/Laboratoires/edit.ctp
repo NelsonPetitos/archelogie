@@ -9,8 +9,8 @@
                 <div class="col-md-9">
                     <?= $this->Form->create($laboratoire) ?>
                     <?php
-                        echo $this->Form->input('code_laboratoire');
-                        echo $this->Form->input('description');
+                        echo $this->Form->input('code_laboratoire', ['escape' => false, 'label' => 'Code du laboratoire']);
+                        echo $this->Form->input('description', ['escape' => false, 'label' => 'Description']);
                     ?>
                 </div>
                 <div class="col-md-3" style="padding-top: 26px;">

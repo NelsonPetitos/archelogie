@@ -1,55 +1,52 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Role'), ['action' => 'edit', $role->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Role'), ['action' => 'delete', $role->id], ['confirm' => __('Are you sure you want to delete # {0}?', $role->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Roles'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Role'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="roles view large-9 medium-8 columns content">
-    <h3><?= h($role->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Name') ?></th>
-            <td><?= h($role->name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($role->id) ?></td>
-        </tr>
-    </table>
-    <div class="related">
-        <h4><?= __('Related Users') ?></h4>
-        <?php if (!empty($role->users)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Email') ?></th>
-                <th><?= __('Password') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th><?= __('Role Id') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($role->users as $users): ?>
-            <tr>
-                <td><?= h($users->id) ?></td>
-                <td><?= h($users->email) ?></td>
-                <td><?= h($users->password) ?></td>
-                <td><?= h($users->created) ?></td>
-                <td><?= h($users->modified) ?></td>
-                <td><?= h($users->role_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <button class="btn btn-sm btn-primary" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>
+                    <div class="btn-group" style="position: relative; left: 10%;">
+                        <h3><?= __('Compte(s) du rôle {0}', $role->name) ?></h3>
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th><?= __('Email') ?></th>
+                            <th><?= __('Date création') ?></th>
+                            <th><?= __('Date dernière modification') ?></th>
+                            <th><?= __('Role du compte') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(count($role->users) == 0): ?>
+                            <tr>
+                                <td style="text-align: center;" colspan="5">Pas de comptes relatifs a ce rôle</td>
+                            </tr>
+                        <?php endif; ?>
+                        <?php foreach ($role->users as $user): ?>
+                        <tr>
+                            <td><?= h($user->email) ?></td>
+                            <td><?= h($user->created) ?></td>
+                            <td><?= h($user->modified) ?></td>
+                            <td><?= $role->name ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span> ', [ 'controller' => 'Users', 'action' => 'edit', $user->id], ['escape' => false, 'class' => 'space-right']) ?>
+                                <?= $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', [ 'controller' => 'Users', 'action' => 'delete', $user->id], ['confirm' => __('Voulez vous supprimer {0}?', $user->email), 'escape' => false]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
     </div>
-</div>
+<!-- /.row -->
+</section>

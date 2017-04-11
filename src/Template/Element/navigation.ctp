@@ -81,12 +81,15 @@
     <button id="acheo_flyer_button">
         <span class="glyphicon glyphicon-triangle-left"></span>
     </button>
-    <p>Pour citer Cette base de données :</p>
-    <ul>
-        <li>Dans sa globalité : XXXXX</li>
-        <li>Base de données Afrique : XXXXX</li>
-        <li>Base de données Amazonie : XXXXXX»</li>
-    </ul>
+    <h4>Pour citer cette base de données </h4>
+    <dl>
+        <dt>Base de données Afrique : <br/></dt>
+        <dd>SAULIEU G. de, OSLISLY R., NLEND P., GARCIN Y. (Authors), CHEVILLOTTE H. & NDE KUETE N. (Software) [2017]. Plateforme des datations archéologiques d'Afrique Centrale.
+            Version 2.0, [31/03/2017]. [http://vmtropicar-proto.ird.fr/archeologie/afrique]<br/><br/></dd>
+        <dt>Base de données Amazonie : <br/></dt>
+        <dd>SAULIEU G. de, ROSTAIN S., (Authors), CHEVILLOTTE H. & NDE KUETE N. (Software) [2017]. Plateforme des datations archéologiques d'Amazonie.
+            Version 2.0, [31/03/2017]. [http://vmtropicar-proto.ird.fr/archeologie/amazonie]</dd>
+    </dl>
 </div>
 
 

@@ -40,8 +40,8 @@
                                 <td><?= h($site->type) ?></td>
                                 <td><?= h($site->contry) ?></td>
                                 <td><?= h($site->province) ?></td>
-                                <td><?= $this->Number->format($site->latitude) ?></td>
-                                <td><?= $this->Number->format($site->longitude) ?></td>
+                                <td><?= $site->has('latitude')? $this->Number->format($site->latitude) : '' ?></td>
+                                <td><?= $site->has('longitude')? $this->Number->format($site->longitude) : '' ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link('<span class="glyphicon glyphicon-search"></span> ', ['action' => 'view', $site->id], ['escape' => false, 'class' => 'space-right']) ?>
                                     <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span> ', ['action' => 'edit', $site->id], ['escape' => false, 'class' => 'space-right']) ?>

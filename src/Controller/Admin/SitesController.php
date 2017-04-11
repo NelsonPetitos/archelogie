@@ -42,7 +42,7 @@ class SitesController extends AppController
             //Get pagination for the view.
             $view = new View($this->request, $this->response, null);
             $view->layout = 'emptyLayout';
-            $view->viewPath = '../Template';
+            $view->viewPath = '../Template/All';
             $pagination = $view->render('pagination');
 
             //Definir l'en tete de la reponse
@@ -109,7 +109,7 @@ class SitesController extends AppController
                 $this->Flash->error(__('The site could not be saved. Please, try again.'));
             }
         }
-        $sources = $this->Sites->Sources->find('list', ['limit' => 200]);
+        $sources = $this->Sites->Sources->find('list');
         $this->set(compact('site', 'sources'));
         $this->set('_serialize', ['site']);
     }
@@ -138,7 +138,7 @@ class SitesController extends AppController
                 $this->Flash->error(__('The site could not be saved. Please, try again.'));
             }
         }
-        $sources = $this->Sites->Sources->find('list', ['limit' => 200]);
+        $sources = $this->Sites->Sources->find('list');
         $this->set(compact('site', 'sources'));
         $this->set('_serialize', ['site']);
     }
@@ -165,20 +165,4 @@ class SitesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-
-    public function search(){
-        if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-
-            $query = $this->Sites->find()->order(['name' => 'DESC']);
-            $params  = $this->request->data(['params']);
-            $conditions = $this->Search->searchConditions($params, 'Sites');
-            $datas = $this->paginate($query->where($conditions));
-
-            $this->viewBuilder()->layout('ajax');
-            $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
-        }
-    }
 }

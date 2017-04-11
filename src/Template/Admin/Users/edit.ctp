@@ -1,27 +1,29 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->input('email');
-            echo $this->Form->input('password');
-            echo $this->Form->input('role_id', ['options' => $roles, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+
+
+
+<section class="content">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3>Edition : <?= h($user->email); ?></h3>
+        </div>
+        <div class="box-body">
+            <div class="col-md-9">
+                <?= $this->Form->create($user) ?>
+                <?php
+                    echo $this->Form->input('email');
+                    echo $this->Form->input('password');
+                    echo $this->Form->input('role_id', ['options' => $roles, 'empty' => true]);
+                ?>
+            </div>
+            <div class="col-md-3" style="padding-top: 26px;">
+                <?= $this->Form->postLink('Supprimer', ['action' => 'delete', $user->id], [ 'class' => 'btn btn-danger', 'confirm' => __('Voulez vous supprimer {0}?', $user->email), 'escape' => false, 'block' => 'deleteform']) ?>
+            </div>
+        </div>
+        <div class="box-footer">
+            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-warning']) ?>
+            <?= $this->Form->button('Valider', ['type' => 'submit']) ?>
+            <?= $this->Form->end() ?>
+        </div>
+
+    </div>
+</section>

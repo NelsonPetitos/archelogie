@@ -3,7 +3,8 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
-
+use Cake\View\View;
+//App::import('Controller', 'Auteurs');
 /**
  * Datations Controller
  *
@@ -19,37 +20,65 @@ class DatationsController extends AppController
      */
     public function index()
     {
+        //Building the request
+        $query = $this->Datations->find();
+        //Request is coming from ajax call
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'contain' => ['Laboratoires', 'Sites'],
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Datations.modified' => 'desc',
+//                    'Datations.date_bp' => 'desc'
+                ]
+            ];
 
-            $query = $this->Datations->find()->order(['date_bp' => 'DESC']);
+            //Check if there is or not search parameters.
             if(count($this->request->data(['params']) != 0)){
                 $params = $this->request->data(['params']);
                 $conditions = $this->Search->searchConditions($params, 'Datations');
-                $this->paginate = [
-                    'contain' => ['Laboratoires', 'Sites']
-                ];
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'ajax';
+            $view->viewPath = '../Template/All';
+            $pagination = $view->render('pagination');
+
+
+            //Change the render layout to render an ajax object
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas', 'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Datations', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
-            $this->viewBuilder()->layout('adminLayout');
+            $this->set('searchUrl', Router::url(['controller' => 'Datations', 'prefix' => 'admin', '?' => ['page' => 1],]));
+
             $this->paginate = [
-                'contain' => ['Laboratoires', 'Sites', 'Sources']
+                'contain' => ['Laboratoires', 'Sites'],
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Datations.modified' => 'desc',
+//                    'Datations.date_bp' => 'desc'
+                ]
             ];
-            $datations = $this->paginate($this->Datations);
+            $datations = $this->paginate($query);
             $this->set(compact('datations'));
+//            $this->set('activedatation', true);
             $this->set('_serialize', ['datations']);
+            $this->viewBuilder()->layout('adminLayout');
         }
     }
+
 
     /**
      * View method
@@ -90,12 +119,12 @@ class DatationsController extends AppController
                 $this->Flash->error(__('The datation could not be saved. Please, try again.'));
             }
         }
-        $laboratoires = $this->Datations->Laboratoires->find('list', ['limit' => 200]);
-        $sites = $this->Datations->Sites->find('list', ['limit' => 200]);
-        $sources = $this->Datations->Sources->find('list', ['limit' => 200]);
-        $materiels = $this->Datations->Materiels->find('list', ['limit' => 200]);
-        $objets = $this->Datations->Objets->find('list', ['limit' => 200]);
-        $publications = $this->Datations->Publications->find('list', ['limit' => 200]);
+        $laboratoires = $this->Datations->Laboratoires->find('list');
+        $sites = $this->Datations->Sites->find('list');
+        $sources = $this->Datations->Sources->find('list');
+        $materiels = $this->Datations->Materiels->find('list');
+        $objets = $this->Datations->Objets->find('list');
+        $publications = $this->Datations->Publications->find('list');
         $this->set(compact('datation', 'laboratoires', 'sites', 'sources', 'materiels', 'objets', 'publications'));
         $this->set('_serialize', ['datation']);
     }
@@ -124,12 +153,12 @@ class DatationsController extends AppController
                 $this->Flash->error(__('The datation could not be saved. Please, try again.'));
             }
         }
-        $laboratoires = $this->Datations->Laboratoires->find('list', ['limit' => 200]);
-        $sites = $this->Datations->Sites->find('list', ['limit' => 200]);
-        $sources = $this->Datations->Sources->find('list', ['limit' => 200]);
-        $materiels = $this->Datations->Materiels->find('list', ['limit' => 200]);
-        $objets = $this->Datations->Objets->find('list', ['limit' => 200]);
-        $publications = $this->Datations->Publications->find('list', ['limit' => 200]);
+        $laboratoires = $this->Datations->Laboratoires->find('list');
+        $sites = $this->Datations->Sites->find('list');
+        $sources = $this->Datations->Sources->find('list');
+        $materiels = $this->Datations->Materiels->find('list');
+        $objets = $this->Datations->Objets->find('list');
+        $publications = $this->Datations->Publications->find('list');
         $this->set(compact('datation', 'laboratoires', 'sites', 'sources', 'materiels', 'objets', 'publications'));
         $this->set('_serialize', ['datation']);
     }
@@ -156,31 +185,112 @@ class DatationsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function search(){
-        if($this->request->is('ajax')) {
-            // Force le controller à rendre une réponse JSON.
-            $this->RequestHandler->renderAs($this, 'json');
-            // Définit le type de réponse de la requete AJAX
-            $this->response->type('application/json');
 
-            $query = $this->Datations->find()->order(['date_bp' => 'DESC']);
-            $params = $this->request->data(['params']);
-            $conditions = $this->Search->searchConditions($params, 'Datations');
-            $this->paginate = [
-                'contain' => ['Laboratoires', 'Sites']
-            ];
-//            $conditions = ['source_id'=> 1];
-            // Find pour récupérer les sites avec le bon serveur
-            $datas = $this->paginate($query->where($conditions));
+    public function ajaxform(){
 
+        $remote = $this->request->query('remote');
 
-            // Chargement du layout AJAX
-            $this->viewBuilder()->layout('ajax');
-            // Créer un contexte sites à renvoyer
-            $this->set(compact('datas'));
-//            $this->set('datas', $conditions);
-            // Généreration des vues de données
-            $this->set('_serialize', ['datas']);
+        if($this->request->is('ajax') && $this->request->is('get') && $remote){
+
+            $this->autoRender = false;
+            $this->response->charset('UTF-8');
+            $this->response->type('html');
+
+            switch ($remote){
+                case 'objet':
+                    $this->loadModel('Objets');
+                    $objet = $this->Objets->newEntity();
+                    $this->set(compact('objet'));
+                    $this->set('_serialize', ['objet']);
+                    break;
+
+                case 'site':
+                    $site = $this->Datations->Sites->newEntity();
+                    $sources = $this->Datations->Sites->Sources->find('list');
+                    $this->set(compact('site', 'sources'));
+                    $this->set('_serialize', ['site']);
+                    break;
+
+                case 'publication':
+                    $publication = $this->Datations->Publications->newEntity();
+                    $sources = $this->Datations->Publications->Sources->find('list');
+                    $auteurs = $this->Datations->Publications->Auteurs->find('list');
+                    $this->set(compact('publication', 'sources', 'auteurs'));
+                    $this->set('_serialize', ['publication']);
+                    break;
+
+                case 'laboratoire':
+                    $laboratoire = $this->Datations->Laboratoires->newEntity();
+                    $this->set('laboratoire', $laboratoire);
+                    $this->set('_serialize', ['laboratoire']);
+                    break;
+                default:
+                    break;
+            }
+            $this->set('remote', $remote);
+            $this->render('/All/formulaire', 'ajax');
+
+        }
+
+        if($this->request->is('post') && $remote){
+            switch ($remote){
+                case 'objet':
+                    $this->loadModel('Objets');
+                    $this->loadModel('Materiels');
+                    $objet = $this->Objets->newEntity();
+                    $materiel = $this->Materiels->newEntity();
+
+                    $objet = $this->Objets->patchEntity($objet, $this->request->data);
+                    $materiel = $this->Materiels->patchEntity($materiel, $this->request->data);
+
+                    if ($this->Objets->save($objet)) {
+                        $materiel->id = $objet->id;
+                        if($this->Materiels->save($materiel)){
+                            $this->Flash->success(__('The objet has been saved.'));
+                            return $this->redirect(['action' => 'add']);
+                        }
+                    }
+                    $this->Flash->error(__('The objet could not be saved. Please, try again.'));
+
+                    break;
+
+                case 'site':
+                    $site = $this->Datations->Sites->newEntity();
+                    $site = $this->Datations->Sites->patchEntity($site, $this->request->data);
+                    if ($this->Datations->Sites->save($site)) {
+                        $this->Flash->success(__('The site has been saved.'));
+                        return $this->redirect(['action' => 'add']);
+                    } else {
+                        $this->Flash->error(__('The site could not be saved. Please, try again.'));
+                    }
+                    break;
+
+                case 'publication':
+                    $publication = $this->Datations->Publications->newEntity();
+                    $publication = $this->Datations->Publications->patchEntity($publication, $this->request->data);
+                    if ($this->Datations->Publications->save($publication)) {
+                        $this->Flash->success(__('The publication has been saved.'));
+                        return $this->redirect(['action' => 'add']);
+                    } else {
+                        $this->Flash->error(__('The publication could not be saved. Please, try again.'));
+                    }
+                    break;
+
+                case 'laboratoire':
+                    $laboratoire = $this->Datations->Laboratoires->newEntity();
+                    $laboratoire = $this->Datations->Laboratoires->patchEntity($laboratoire, $this->request->data);
+                    if ($this->Datations->Laboratoires->save($laboratoire)) {
+                        $this->Flash->success(__('The laboratoire has been saved.'));
+                        return $this->redirect(['action' => 'add']);
+                    } else {
+                        $this->Flash->error(__('The laboratoire could not be saved. Please, try again.'));
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
+
 }

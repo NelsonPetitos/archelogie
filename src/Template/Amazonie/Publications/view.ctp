@@ -23,15 +23,15 @@
             <div class="panel-body">
                 <table class="my__table">
                     <tr>
-                        <td>Titre de la publication</td>
+                        <th>Titre de la publication</th>
                         <td><?= $publication->title ?></td>
                     </tr>
                     <tr>
-                        <td>Année de publication</td>
+                        <th>Année de publication</th>
                         <td><?= h($publication->annee) ?></td>
                     </tr>
                     <tr>
-                        <td>Référence bibliographique</td>
+                        <th>Référence bibliographique</th>
                         <td><?= $publication->reference ?></td>
                     </tr>
                 </table>

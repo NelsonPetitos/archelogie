@@ -28,7 +28,7 @@
         <div class="col-md-8" >
             <div class="panel panel-default"><br/><br/>
                 <dl class="dl-horizontal">
-                    <dt><a href="http://www.parcsgabon.org/" target="_blank"><?= $this->Html->image('logo-anpn.png', ['alt' => 'Logo ANPN']); ?></a></dt>
+                    <dt><a href="http://www.parcsgabon.org/" target="_blank"><?= $this->Html->image('logo-anpn.jpg', ['alt' => 'Logo ANPN', 'width' => '170px']); ?></a></dt>
                     <dd>
                         Agence Nationale des Parcs Nationaux du Gabon
                         <ul>
@@ -38,18 +38,7 @@
                     </dd><br/><br/>
 
 
-                    <dt><a href="http://www.mae.u-paris10.fr/archam/" target="_blank"><?= $this->Html->image('logo-archam.jpg', ['alt' => 'Logo ARCHAM']); ?></a></dt>
-                    <dd>
-                        UMR ArchAm « Archéologie des Amériques » 
-                        <ul>
-                            <li>CNRS</li>
-                            <li><a href="http://www.mae.u-paris10.fr/archam/" target="_blank"> http://www.mae.u-paris10.fr/archam/</a> </li>
-                        </ul>
-
-                    </dd><br/><br/>
-
-
-                    <dt><a href="http://www.crex-group.org/" target="_blank"><?= $this->Html->image('logo-crex.jpg', ['alt' => 'Logo CREX']); ?></a></dt>
+                    <dt><a href="http://www.crex-group.org/" target="_blank"><?= $this->Html->image('logo-crex.jpg', ['alt' => 'Logo CREX', 'width' => '150px']); ?></a></dt>
                     <dd>
                         Centre de Recherche et d’Expertise Scientifique au Cameroun 
                         <ul>
@@ -60,7 +49,7 @@
                     </dd><br/><br/>
 
 
-                    <dt><a href="http://www.paloc.fr" target="_blank"><?= $this->Html->image('logo-ird.jpg', ['alt' => 'Logo IRD']); ?></a></dt>
+                    <dt><a href="http://www.paloc.fr" target="_blank"><?= $this->Html->image('logo-ird.png', ['alt' => 'Logo IRD', 'width' => '150px']); ?></a></dt>
                     <dd>
                         UMR 208 Paloc « Patrimoines locaux  et Gouvernance »  
                         <ul>
@@ -71,7 +60,7 @@
                     </dd><br/><br/>
 
 
-                    <dt><a href="http://www.uy1.uninet.cm/" target="_blank"><?= $this->Html->image('logo-uy1.jpg', ['alt' => 'Logo UY1']); ?></a></dt>
+                    <dt><a href="http://www.uy1.uninet.cm/" target="_blank"><?= $this->Html->image('logo-uy1.jpg', ['alt' => 'Logo UY1', 'width' => '150px']); ?></a></dt>
                     <dd>
                         Université de Yaoundé I au Cameroun 
                         <ul>
@@ -82,7 +71,7 @@
                     </dd><br/><br/>
 
 
-                    <dt><a href="http://www.geo.uni-potsdam.de/" target="_blank"><?= $this->Html->image('logo_iees.jpg', ['alt' => 'Logo Université de Potsdam']); ?></a></dt>
+                    <dt><a href="http://www.geo.uni-potsdam.de/" target="_blank"><?= $this->Html->image('logo-iees.jpg', ['alt' => 'Logo Université de Potsdam', 'width' => '150px']); ?></a></dt>
                     <dd>
                         Institute of Earth and Environmental Science
                         <ul>
@@ -92,7 +81,17 @@
 
                     </dd><br/><br/>
 
+
+                    <dt><a href="http://www.mae.u-paris10.fr/archam/" target="_blank"><?= $this->Html->image('logo-archam.png', ['alt' => 'Logo ARCHAM', 'width' => '150px']); ?></a></dt>
+                    <dd>
+                        UMR ArchAm « Archéologie des Amériques » 
+                        <ul>
+                            <li>CNRS</li>
+                            <li><a href="http://www.mae.u-paris10.fr/archam/" target="_blank"> http://www.mae.u-paris10.fr/archam/</a> </li>
+                        </ul>
+
                     </dd>
+
                 </dl>
             </div>
         <div class="col-md-2" ></div>

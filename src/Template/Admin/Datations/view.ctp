@@ -1,189 +1,150 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Datation'), ['action' => 'edit', $datation->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Datation'), ['action' => 'delete', $datation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $datation->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Datations'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Datation'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Laboratoires'), ['controller' => 'Laboratoires', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Laboratoire'), ['controller' => 'Laboratoires', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Sites'), ['controller' => 'Sites', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Site'), ['controller' => 'Sites', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Sources'), ['controller' => 'Sources', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Source'), ['controller' => 'Sources', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Materiels'), ['controller' => 'Materiels', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Materiel'), ['controller' => 'Materiels', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Objets'), ['controller' => 'Objets', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Objet'), ['controller' => 'Objets', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Publications'), ['controller' => 'Publications', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Publication'), ['controller' => 'Publications', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="datations view large-9 medium-8 columns content">
-    <h3><?= h($datation->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Type Datation') ?></th>
-            <td><?= h($datation->type_datation) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Code Reference') ?></th>
-            <td><?= h($datation->code_reference) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Discipline') ?></th>
-            <td><?= h($datation->discipline) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Laboratoire') ?></th>
-            <td><?= $datation->has('laboratoire') ? $this->Html->link($datation->laboratoire->id, ['controller' => 'Laboratoires', 'action' => 'view', $datation->laboratoire->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Site') ?></th>
-            <td><?= $datation->has('site') ? $this->Html->link($datation->site->name, ['controller' => 'Sites', 'action' => 'view', $datation->site->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Detail Site Recolte') ?></th>
-            <td><?= h($datation->detail_site_recolte) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Culture Associee') ?></th>
-            <td><?= h($datation->culture_associee) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Horizon Culturel') ?></th>
-            <td><?= h($datation->horizon_culturel) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Numero Structure') ?></th>
-            <td><?= h($datation->numero_structure) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Date Calibree') ?></th>
-            <td><?= h($datation->date_calibree) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Commentaire') ?></th>
-            <td><?= h($datation->commentaire) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Source') ?></th>
-            <td><?= $datation->has('source') ? $this->Html->link($datation->source->id, ['controller' => 'Sources', 'action' => 'view', $datation->source->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($datation->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Date Bp') ?></th>
-            <td><?= $this->Number->format($datation->date_bp) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Annee Prise Echantillon') ?></th>
-            <td><?= $this->Number->format($datation->annee_prise_echantillon) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Erreur Standard') ?></th>
-            <td><?= $this->Number->format($datation->erreur_standard) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($datation->created) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($datation->modified) ?></td>
-        </tr>
-    </table>
-    <div class="related">
-        <h4><?= __('Related Materiels') ?></h4>
-        <?php if (!empty($datation->materiels)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Categorie') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($datation->materiels as $materiels): ?>
-            <tr>
-                <td><?= h($materiels->id) ?></td>
-                <td><?= h($materiels->name) ?></td>
-                <td><?= h($materiels->categorie) ?></td>
-                <td><?= h($materiels->created) ?></td>
-                <td><?= h($materiels->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Materiels', 'action' => 'view', $materiels->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Materiels', 'action' => 'edit', $materiels->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Materiels', 'action' => 'delete', $materiels->id], ['confirm' => __('Are you sure you want to delete # {0}?', $materiels->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+<section class="content">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <button class="btn btn-sm btn-primary" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>
+            <div class="btn-group" style="position: relative; float: right;">
+                <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span> Éditer', ['action' => 'edit', $datation->id], ['class' => 'btn btn-sm btn-primary', 'escape' => false]) ?>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="col-lg-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Datations</div>
+                    <div class="panel-body">
+                        <table style="border-collapse: separate;border-spacing: 1.5em 1.5em;">
+                            <tr>
+                                <th>Date "Before Present"</th>
+                                <td><?= $datation->date_bp ?></td>
+                            </tr>
+                            <tr>
+                                <th>Date calibrée</th>
+                                <td><?= $datation->date_calibree ?></td>
+                            </tr>
+                            <tr>
+                                <th>Erreur standard</th>
+                                <td><?= $datation->erreur_standard ?></td>
+                            </tr>
+                            <tr>
+                                <th>Discipline</th>
+                                <td><?= $datation->discipline ?></td>
+                            </tr>
+                            <tr>
+                                <th>Attribution chronoculturelle</th>
+                                <td><?= $datation->culture_associee ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">Materiels daté</div>
+                    <div class="panel-body">
+                        <ul>
+                            <?php foreach ($datation->materiels as $materiels): ?>
+                            <li><?= h($materiels->name) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">objets associés</div>
+                    <div class="panel-body">
+                        <ul>
+                            <?php foreach ($datation->objets as $objet): ?>
+                            <li><?= h($objet->name) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">Publications associés</div>
+                    <div class="panel-body">
+                        <ul>
+                            <?php foreach ($datation->publications as $publication): ?>
+                            <li>
+                                <?= h($publication->annee) ?> -
+                                <?= h($publication->title) ?> -
+                                <?= h($publication->reference) ?>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-7">
+                <div class="panel panel-info" >
+                        <div class="panel-heading">Laboratoire d'analyse</div>
+                        <div class="panel-body">
+                            <table style="border-collapse: separate;border-spacing: 1.5em 1.5em;">
+                                <tr>
+                                    <th>Code du laboratoire d'analyse</th>
+                                    <td><?= $datation->has('laboratoire') ? h($datation->laboratoire->code_laboratoire) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Intitulé du laboratoire</th>
+                                    <td><?= $datation->has('laboratoire') ? h($datation->laboratoire->description) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Code de référence de l'échantillon</th>
+                                    <td><?=  h($datation->code_reference) ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Année de prise de l'échantillon</th>
+                                    <td><?= $datation->annee_prise_echantillon ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                <div class="panel panel-info">
+                        <div class="panel-heading">Site</div>
+                        <div class="panel-body">
+                            <table style="border-collapse: separate;border-spacing: 1.5em 1.5em;">
+                                <tr>
+                                    <th>Site de récolte</th>
+                                    <td><?= $datation->has('site') ? $this->Html->link($datation->site->name, ['controller' => 'Sites', 'action' => 'view', $datation->site->id]) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Type de site</th>
+                                    <td><?= $datation->has('site') ? h($datation->site->type) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Horizon culturel</th>
+                                    <td><?= $datation->horizon_culturel ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Numéro de structure</th>
+                                    <td><?= $datation->numero_structure ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Pays</th>
+                                    <td><?= $datation->has('site') ? h($datation->site->contry) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Province</th>
+                                    <td><?= $datation->has('site') ? h($datation->site->province) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Latitude</th>
+                                    <td><?= $datation->has('site') ? h($datation->site->latitude) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Longitude</th>
+                                    <td><?= $datation->has('site') ? h($datation->site->longitude) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Détails du site de récolte</th>
+                                    <td><?= $datation->detail_site_recolte ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
-    <div class="related">
-        <h4><?= __('Related Objets') ?></h4>
-        <?php if (!empty($datation->objets)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Categorie') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($datation->objets as $objets): ?>
-            <tr>
-                <td><?= h($objets->id) ?></td>
-                <td><?= h($objets->name) ?></td>
-                <td><?= h($objets->categorie) ?></td>
-                <td><?= h($objets->created) ?></td>
-                <td><?= h($objets->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Objets', 'action' => 'view', $objets->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Objets', 'action' => 'edit', $objets->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Objets', 'action' => 'delete', $objets->id], ['confirm' => __('Are you sure you want to delete # {0}?', $objets->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Publications') ?></h4>
-        <?php if (!empty($datation->publications)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Annee') ?></th>
-                <th><?= __('Title') ?></th>
-                <th><?= __('Reference') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th><?= __('Source Id') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($datation->publications as $publications): ?>
-            <tr>
-                <td><?= h($publications->id) ?></td>
-                <td><?= h($publications->annee) ?></td>
-                <td><?= h($publications->title) ?></td>
-                <td><?= h($publications->reference) ?></td>
-                <td><?= h($publications->created) ?></td>
-                <td><?= h($publications->modified) ?></td>
-                <td><?= h($publications->source_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Publications', 'action' => 'view', $publications->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Publications', 'action' => 'edit', $publications->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Publications', 'action' => 'delete', $publications->id], ['confirm' => __('Are you sure you want to delete # {0}?', $publications->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-</div>
+</section>

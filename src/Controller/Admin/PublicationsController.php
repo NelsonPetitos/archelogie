@@ -42,7 +42,7 @@ class PublicationsController extends AppController
             //Get pagination for the view.
             $view = new View($this->request, $this->response, null);
             $view->layout = 'emptyLayout';
-            $view->viewPath = '../Template';
+            $view->viewPath = '../Template/All';
             $pagination = $view->render('pagination');
 
             //Definir l'en tete de la reponse
@@ -116,10 +116,10 @@ class PublicationsController extends AppController
                 $this->Flash->error(__('The publication could not be saved. Please, try again.'));
             }
         }
-        $sources = $this->Publications->Sources->find('list', ['limit' => 200]);
-        $auteurs = $this->Publications->Auteurs->find('list', ['limit' => 200]);
-        $datations = $this->Publications->Datations->find('list', ['limit' => 200]);
-        $this->set(compact('publication', 'sources', 'auteurs', 'datations'));
+        $sources = $this->Publications->Sources->find('list');
+        $auteurs = $this->Publications->Auteurs->find('list');
+//        $datations = $this->Publications->Datations->find('list');
+        $this->set(compact('publication', 'sources', 'auteurs'));
         $this->set('_serialize', ['publication']);
     }
 
@@ -150,10 +150,10 @@ class PublicationsController extends AppController
                 $this->Flash->error(__('The publication could not be saved. Please, try again.'));
             }
         }
-        $sources = $this->Publications->Sources->find('list', ['limit' => 200]);
-        $auteurs = $this->Publications->Auteurs->find('list', ['limit' => 200]);
-        $datations = $this->Publications->Datations->find('list', ['limit' => 200]);
-        $this->set(compact('publication', 'sources', 'auteurs', 'datations'));
+        $sources = $this->Publications->Sources->find('list');
+        $auteurs = $this->Publications->Auteurs->find('list');
+//        $datations = $this->Publications->Datations->find('list');
+        $this->set(compact('publication', 'sources', 'auteurs'));
         $this->set('_serialize', ['publication']);
     }
 

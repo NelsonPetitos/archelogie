@@ -8,7 +8,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-9">
-                    <?= $this->Form->input('name'); ?>
+                    <?= $this->Form->input('name', ['label'=>'Nom de l\'auteur']); ?>
                 </div>
                 <div class="col-md-3" style="padding-top: 26px;">
                     <?= $this->Form->postLink('Supprimer', ['action' => 'delete', $auteur->id], [ 'class' => 'btn btn-danger', 'confirm' => __('Voulez vous supprimer {0}?', $auteur->name), 'escape' => false, 'block' => 'deleteform']) ?>

@@ -20,7 +20,7 @@
 
         <!-- Page Content -->
         <div class="container">
-            <div class="wrap" id="archeologie_loader">
+            <div class="wrap_loader" id="archeologie_loader">
                 <div class="loading">
                     <div class="bounceball"></div>
                     <div class="text">Chargement ...</div>

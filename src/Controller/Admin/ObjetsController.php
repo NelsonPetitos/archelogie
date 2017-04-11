@@ -3,6 +3,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * Objets Controller
@@ -17,33 +18,59 @@ class ObjetsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
-    {
+    public function index(){
+        $query = $this->Objets->find();
         if($this->request->is('ajax')){
-            $this->RequestHandler->renderAs($this, 'json');
-            $this->response->type('application/json');
-            $this->viewBuilder()->layout('ajax');
+            //set the pagination informations
+            $this->paginate = [
+                'page' => $this->request->query('page'),
+                'limit' => $this->request->query('limit'),
+                'order' => [
+                    'Objets.modified' => 'DESC',
+                    'Objets.name' => 'ASC'
+                ]
+            ];
 
-            $query = $this->Objets->find()->order(['name' => 'DESC']);
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
+            $params  = $this->request->data(['params']);
+            if(count($params) != 0){
                 $conditions = $this->Search->searchConditions($params, 'Objets');
                 $datas = $this->paginate($query->where($conditions));
             }else{
                 $datas = $this->paginate($query);
             }
 
+            //Get pagination for the view.
+            $view = new View($this->request, $this->response, null);
+            $view->layout = 'ajax';
+            $view->viewPath = '../Template/All';
+            $pagination = $view->render('pagination');
+
+            //Definir l'en tete de la reponse
+            $this->RequestHandler->renderAs($this, 'json');
+            $this->response->type('application/json');
+            $this->viewBuilder()->layout('ajax');
+
             $this->set(compact('datas'));
-            $this->set('_serialize', ['datas']);
+            $this->set(compact('pagination'));
+            $this->set('_serialize', ['datas',  'pagination']);
         }else{
-            $this->set('searchUrl', Router::url(['controller' => 'Objets', '?' => ['page' => 1],]));
-            $this->paginate = ['limit' => 10];
+            $this->set('searchUrl', Router::url(['controller' => 'Objets', 'prefix' => 'admin', '?' => ['page' => 1]]));
+            $this->paginate = [
+                'limit' => 10,
+                'page' => 1,
+                'order' => [
+                    'Objets.modified' => 'DESC',
+                    'Objets.name' => 'ASC'
+                ]
+            ];
+            $objets = $this->paginate($query);
             $this->viewBuilder()->layout('adminLayout');
-            $objets = $this->paginate($this->Objets);
             $this->set(compact('objets'));
-            $this->set('_serialize', ['objets']);;
+            $this->set('_serialize', ['objets']);
         }
     }
+
+
 
     /**
      * View method
@@ -73,21 +100,29 @@ class ObjetsController extends AppController
     {
         $this->viewBuilder()->layout('adminLayout');
 
+        $this->loadModel('Materiels'); //Load relate materiel table.
         $objet = $this->Objets->newEntity();
-        if ($this->request->is('post')) {
-            $objet = $this->Objets->patchEntity($objet, $this->request->data);
-            if ($this->Objets->save($objet)) {
-                $this->Flash->success(__('The objet has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The objet could not be saved. Please, try again.'));
+        if ($this->request->is('post')) {
+            $materiel = $this->Materiels->newEntity();
+            $objet = $this->Objets->patchEntity($objet, $this->request->data);
+            $materiel = $this->Materiels->patchEntity($materiel, $this->request->data);
+
+            if ($this->Objets->save($objet)) {
+                $materiel->id = $objet->id;
+                if($this->Materiels->save($materiel)){
+                    $this->Flash->success(__('The objet has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                }
             }
+            $this->Flash->error(__('The objet could not be saved. Please, try again.'));
         }
-        $datations = $this->Objets->Datations->find('list', ['limit' => 200]);
-        $this->set(compact('objet', 'datations'));
+
+        $this->set(compact('objet'));
         $this->set('_serialize', ['objet']);
     }
+
+
 
     /**
      * Edit method
@@ -99,13 +134,16 @@ class ObjetsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->layout('adminLayout');
+        $this->loadModel('Materiels');
 
-        $objet = $this->Objets->get($id, [
-            'contain' => ['Datations']
-        ]);
+        $objet = $this->Objets->get($id);
+        $materiel = $this->Materiels->get($id);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $objet = $this->Objets->patchEntity($objet, $this->request->data);
-            if ($this->Objets->save($objet)) {
+            $materiel = $this->Materiels->patchEntity($materiel, $this->request->data);
+
+            if ($this->Objets->save($objet) && $this->Materiels->save($materiel)) {
                 $this->Flash->success(__('The objet has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -113,8 +151,8 @@ class ObjetsController extends AppController
                 $this->Flash->error(__('The objet could not be saved. Please, try again.'));
             }
         }
-        $datations = $this->Objets->Datations->find('list', ['limit' => 200]);
-        $this->set(compact('objet', 'datations'));
+//        $datations = $this->Objets->Datations->find('list', ['limit' => 200]);
+        $this->set(compact('objet'));
         $this->set('_serialize', ['objet']);
     }
 
@@ -130,8 +168,12 @@ class ObjetsController extends AppController
         $this->viewBuilder()->layout('adminLayout');
 
         $this->request->allowMethod(['post', 'delete']);
+
+        $this->loadModel('Materiels'); //Load relate materiel table.
+
         $objet = $this->Objets->get($id);
-        if ($this->Objets->delete($objet)) {
+        $materiel = $this->Materiels->get($id);
+        if ($this->Objets->delete($objet) && $this->Materiels->delete($materiel)) {
             $this->Flash->success(__('The objet has been deleted.'));
         } else {
             $this->Flash->error(__('The objet could not be deleted. Please, try again.'));

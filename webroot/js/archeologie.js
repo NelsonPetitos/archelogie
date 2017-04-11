@@ -26,7 +26,7 @@ function attachPagination() {
         var request_url = $(this).attr('href');
         $('#archeologie_ajaxchUrl').val(request_url);
         // request_url += '&limit='+$('#paginateLimit').val();
-        console.log('Lien ajax : '+request_url);
+        // console.log('Lien ajax : '+request_url);
         ajaxPageLoader(request_url);
         return ;
     })
@@ -36,25 +36,29 @@ function attachPagination() {
 //Afficher les résultats d'une recherche sur les DATATIONS
 function displayDatationSearchResults(datations, isAdmin) {
     if(datations.length == 0){
-        $('#data_table_body').html('<tr><td colspan="6" style="text-align: center; font-size: 14px;">Aucune datation pour cette recherche</td></tr>');
+        $('#data_table_body').html('<tr><td colspan="7" style="text-align: center; font-size: 14px;">Aucune datation pour cette recherche</td></tr>');
     }else {
         $.each(datations, function( index, datation ) {
+            var formname = "post_"+index;
             var apenstr =
-                '<tr onclick="voirDetail(\'datations/view/'+datation.id+'\')">' +
+                '<tr>' +
                 '<td>'+((datation.date_bp == null)? "":datation.date_bp)+'</td>' +
                 '<td>'+((datation.erreur_standard == null)? "":datation.erreur_standard)+'</td>' +
                 '<td>'+((datation.date_calibree == null)? "":datation.date_calibree)+'</td>' +
-                '<td><a href="'+$('#sitedetailUrl').val()+'/'+datation.site.id+'">'+((datation.site == null)? "":datation.site.name)+'</a></td>' +
+                '<td>'+(!(datation.site)? "":'<a href="'+$('#sitedetailUrl').val()+'/'+datation.site.id+'">'+datation.site.name+'</a>')+'</td>' +
                 '<td>'+((datation.laboratoire == null)? "":datation.laboratoire.code_laboratoire)+'</td>' +
                 '<td>'+((datation.code_reference == null)? "":datation.code_reference)+'</td>';
             if(isAdmin){
                 apenstr +=
-                    '<td>'+((datation.commentaire == null)?"":datation.commentaire)+'</td>' +
+
                     '<td class="action">' +
-                    ' <a href="datations/view/'+datation.id+'">Détails</a> '+
-                    ' <a href="datations/edit/'+datation.id+'">Modifier</a> '+
-                    ' <a href="datations/delete/'+datation.id+'">Supprimer</a>'+
+                        '<a href="datations/view/'+datation.id+'" class="space-right"><span class="glyphicon glyphicon-search"></span></a> '+
+                        '<a href="datations/edit/'+datation.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#" onclick="if(confirm(\'Supprimer la datation ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="datations/delete/'+datation.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
+            }else{
+                apenstr = apenstr.replace('<tr>', '<tr onclick="voirDetail(\'datations/view/'+datation.id+'\')">');
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -66,7 +70,7 @@ function displayDatationSearchResults(datations, isAdmin) {
 //Afficher les résultats d'une recherche sur les SITES
 function displaySiteSearchResults(sites, isAdmin) {
     if(sites.length == 0){
-        $('#data_table_body').html('<tr><td colspan="6" style="text-align: center; font-size: 14px;">Aucun site pour cette recherche</td></tr>');
+        $('#data_table_body').html('<tr><td colspan="7" style="text-align: center; font-size: 14px;">Aucun site pour cette recherche</td></tr>');
     }else {
         $.each(sites, function( index, site ) {
             var formname = "post_"+index;
@@ -171,10 +175,10 @@ function displayLaboratoireSearchResults(laboratoires, isAdmin) {
             if(isAdmin){
                 apenstr +=
                     '<td class="action">' +
-                        ' <a href="laboratoires/edit/'+laboratoire.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
-                    '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer '+laboratoire.code_laboratoire+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<a href="laboratoires/edit/'+laboratoire.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer '+laboratoire.code_laboratoire+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
-                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="laboratoire/delete/'+laboratoire.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="laboratoires/delete/'+laboratoire.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -190,19 +194,18 @@ function displayObjetSearchResults(objets, isAdmin) {
         $('#data_table_body').html('<tr><td colspan="3" style="text-align: center; font-size: 14px;">Aucun objet pour cette recherche</td></tr>');
     }else {
         $.each(objets, function( index, objet ) {
+            var formname = "post_"+index;
             var apenstr =
                 '<tr>' +
                 '<td>'+objet.name+'</td>'+
                 '<td>'+((objet.categorie == null)? "" : objet.categorie)+'</td>' ;
             if(isAdmin){
                 apenstr +=
-                    '<td>'+((objet.created == null)? "" : objet.created)+'</td>' +
-                    '<td>'+((objet.modified == null)? "" : objet.modified)+'</td>'+
                     '<td class="action">' +
-                        ' <a href="objets/view/'+objet.id+'">Détails</a> '+
-                        ' <a href="objets/edit/'+objet.id+'">Modifier</a> '+
-                        ' <a href="objets/delete/'+objet.id+'">Supprimer</a> '+
+                        '<a href="objets/edit/'+objet.id+'" class="space-right"><span class="glyphicon glyphicon-pencil"></span></a> '+
+                        '<a href="#"  onclick="if(confirm(\'Voulez vous supprimer '+objet.name+' ? \')) { document.'+formname+'.submit(); } event.returnValue = false; return false;"><span class="glyphicon glyphicon-trash"></span></a>' +
                     '</td>';
+                apenstr += '<form name="'+formname+'" style="display:none;" method="post" action="objets/delete/'+objet.id+'"><input type="hidden" name="_method" class="form-control" value="POST"></form>'
             }
             apenstr += '</tr>';
             $('#data_table_body').append(apenstr);
@@ -276,7 +279,7 @@ function ajaxPageLoader(request_url) {
         request_url += '?page=1&limit='+limit;
     }
     params = getSearchParams();
-    console.log(params)
+    // console.log(params)
     $('#data_table_body').html('');
     $('#pagination_box').html('');
 
@@ -437,7 +440,31 @@ $(document).ready(function () {
     setEvenListenSearchInputText();
     attachPagination();
     drawMap();
-    $(".auteur-select-list").select2({
-        placeholder: 'Saisir pour rechercher et selectionner le(s) auteur(s)'
-    });
+    if($(".auteur-select-list").length !== 0) {
+        $(".auteur-select-list").select2({
+            placeholder: 'Saisir pour rechercher et selectionner le(s) auteur(s)'
+        });
+    }
+    if($(".publication-select-list").length !== 0) {
+        $(".publication-select-list").select2({
+            placeholder: 'Saisir pour rechercher et selectionner une(les) publication(s)'
+        });
+    }
+    if($("[name='laboratoire_id']").length !== 0) {
+        $("[name='laboratoire_id']").select2();
+    }
+    if($("[name='site_id']").length !== 0) {
+        $("[name='site_id']").select2();
+    }
+    if($(".objet-select-list").length !== 0) {
+        $(".objet-select-list").select2({
+            placeholder: 'Saisir pour rechercher et selectionner un objet'
+        });
+    }
+    if($(".materiel-select-list").length !== 0) {
+        $(".materiel-select-list").select2({
+            placeholder: 'Saisir pour rechercher et selectionner un materiel'
+        });
+    }
+
 })

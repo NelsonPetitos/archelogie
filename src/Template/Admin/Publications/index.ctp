@@ -19,8 +19,6 @@
                             <th><?= $this->Paginator->sort('title', 'Titre de la publication') ?></th>
                             <th><?= $this->Paginator->sort('annee', 'Année') ?></th>
                             <th><?= $this->Paginator->sort('reference', 'Reférence bibliographique') ?></th>
-                            <!--<th><?= $this->Paginator->sort('created') ?></th>-->
-                            <!--<th><?= $this->Paginator->sort('modified') ?></th>-->
                             <th class="actions" ><?= __('Actions') ?></th>
                         </tr>
                         <tr>
@@ -35,8 +33,6 @@
                             <td><?= h($publication->title) ?></td>
                             <td><?= __($publication->annee) ?></td>
                             <td><?= h($publication->reference) ?></td>
-                            <!--<td><?= h($publication->created) ?></td>-->
-                            <!--<td><?= h($publication->modified) ?></td>-->
                             <td class="actions">
                                 <?= $this->Html->link('<span class="glyphicon glyphicon-pencil"></span>', ['action' => 'edit', $publication->id], ['escape' => false, 'class' => 'space-right']) ?>
                                 <?= $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span> ', ['action' => 'delete', $publication->id], ['confirm' => __('Voulez vous supprimer ?'), 'escape' => false]) ?>

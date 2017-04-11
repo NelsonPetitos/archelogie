@@ -48,7 +48,7 @@ class PublicationsController extends AppController
             //Get pagination for the view.
             $view = new View($this->request, $this->response, null);
             $view->layout = 'emptyLayout';
-            $view->viewPath = '../Template';
+            $view->viewPath = '../Template/All';
             $pagination = $view->render('pagination');
 
             $this->RequestHandler->renderAs($this, 'json');

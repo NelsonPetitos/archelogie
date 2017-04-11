@@ -10,27 +10,27 @@
             <div class="panel-body">
                 <table class="my__table">
                     <tr>
-                        <td>Site de récolte</td>
+                        <th><?= __('Nom du site') ?></th>
                         <td id="sitename"><?= $site->name  ?></td>
                     </tr>
                     <tr>
-                        <td>Type de site</td>
+                        <th><?= __('Type de site') ?></th>
                         <td><?= h($site->type) ?></td>
                     </tr>
                     <tr>
-                        <td>Pays</td>
+                        <th><?= __('Pays') ?></th>
                         <td><?= $site->contry ?></td>
                     </tr>
                     <tr>
-                        <td>Province</td>
+                        <th><?= __('Province') ?></th>
                         <td><?= $site->province ?></td>
                     </tr>
                     <tr>
-                        <td>Latitude</td>
+                        <th><?= __('Latitude') ?></th>
                         <td id="lalat"><?= $site->latitude ?></td>
                     </tr>
                     <tr>
-                        <td>Longitude</td>
+                        <th><?= __('Longitude') ?></th>
                         <td id="lalong"><?= $site->longitude ?></td>
                     </tr>
                 </table>

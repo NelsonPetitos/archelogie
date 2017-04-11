@@ -10,20 +10,23 @@
 <div class="row">
     <div class="col-xs-12">
         <p class="text-justify">
-            Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix saevientis adsidua, humani cruoris avida nihil mitius quam maritus; qui paulatim eruditiores facti processu temporis ad nocendum per clandestinos versutosque rumigerulos conpertis leviter addere quaedam male suetos falsa et placentia sibi discentes, adfectati regni vel artium nefandarum calumnias insontibus adfligeban
+            La plateforme des données archéologiques d’Amazonie est un outil de gestion et de diffusion de résultats archéologiques publiés concernant le massif forestier amazonien (Brésil, Bolivie, Pérou, Equateur, Colombie, Venezuela Guyana, Suriname, Guyane Française.
         </p>
     </div>
 </div>
 <div class="row" >
     <div class="col-xs-7">
         <p class="text-justify">
-            Ac ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.<br />
+            Elle centralise sur la base de donnée des datations radiocarbones publiées, différentes informations comme le type de matériel daté, le type de site et les méthode de fouilles (terra preta, fosse, sondage, tranchée, monticule, sol d’occupation, fouille en grotte, etc.),
+            la tradition céramique et son éventuelle appartenance à une horizon stylistique. Elle permet également grâce à la référence bibliographique de remonter à la publication source lorsque cela est possible.
         </p>
         <p class="text-justify">
-            Sed fruatur sane hoc solacio atque hanc insignem ignominiam, quoniam uni praeter se inusta sit, putet esse leviorem, dum modo, cuius exemplo se consolatur, eius exitum expectet, praesertim cum in Albucio nec Pisonis libidines nec audacia Gabini fuerit ac tamen hac una plaga conciderit, ignominia senatus.<br /><br />
+            Cette base de données tente de donner pour la première fois une vision spatiale et chronologique des données archéologiques accumulées depuis ces cinquante dernières années en Amazonie.
         </p>
         <p class="text-justify">
-            Saraceni tamen nec amici nobis umquam nec hostes optandi, ultro citroque discursantes quicquid inveniri poterat momento temporis parvi vastabant milvorum rapacium similes, qui si praedam dispexerint celsius, volatu rapiunt celeri, aut nisi impetraverint, non inmorantur.<br /><br />
+            Cette base est perfectible, mais est conçue comme un outil devant répondre aux problématiques que se posent scientifiques, enseignants et toutes personnes soucieuses du patrimoine culturel d’une région encore mal connue.
+            Pour toutes utilisations ou questions d’ordre scientifique, prière de contacter Geoffroy de Saulieu (geoffroy.desaulieu@ird.fr) (UMR 208 PALOC "Patrimoines locaux et gouvernance" IRD-MNHN) ou Stéphen Rostain (stephen.rostain@mae.u-paris10.f)
+            (UMR 8096 ArchAm “Archéologie des Amériques” CNRS-Université de Paris I Panthéon-Sorbone)<br/><br/>Bonne visite !
         </p>
     </div>
     <div class="col-xs-5">

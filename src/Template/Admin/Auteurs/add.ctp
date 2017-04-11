@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <?= $this->Form->create($auteur) ?>
-                    <?php echo $this->Form->input('name');?>
+                    <?php echo $this->Form->input('name', ['label'=>'Nom de l\'auteur', 'escape' => false]);?>
                 </div>
             </div>
             <!-- /.row -->

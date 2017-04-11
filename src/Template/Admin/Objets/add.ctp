@@ -18,9 +18,9 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
             <?= $this->Form->button('Valider', ['type' => 'submit']) ?>
             <?= $this->Form->end() ?>
-            <?= $this->Html->link(__('Annuler'), ['action' => 'index'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 </section>
