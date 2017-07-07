@@ -8,8 +8,8 @@ $('[data-archeologie="true"]').click(function (event) {
     console.log("Je clique sur un boutton de acrcheologie add");
     var url = $("#ajaxcreate").val();
     var remote = this.value;
-    console.log(url);
-    console.log(remote);
+    // console.log(url);
+    // console.log(remote);
     if(url && remote){
         $.ajax({
             url:  url,

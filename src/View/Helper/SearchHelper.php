@@ -48,6 +48,6 @@ class SearchHelper extends Helper {
                 '</div>';
         }
 
-        return '<input type="text" class="form-control" value="'.$type.'"/>';
+        return '<input type="text" class="form-control" disabled="disabled"/>';
     }
 }

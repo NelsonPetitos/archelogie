@@ -48,7 +48,8 @@ class PublicationsTable extends Table
         $this->belongsToMany('Auteurs', [
             'foreignKey' => 'publication_id',
             'targetForeignKey' => 'auteur_id',
-            'joinTable' => 'auteurs_publications'
+            'joinTable' => 'auteurs_publications',
+            'sort' => ['Auteurs.name' => 'ASC']
         ]);
         $this->belongsToMany('Datations', [
             'foreignKey' => 'publication_id',

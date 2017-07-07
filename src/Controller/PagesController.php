@@ -22,8 +22,7 @@ class PagesController extends AppController
         if (!empty($this->request->param('pass'))) {
             $param = $this->request->param('pass')[0];
             //$this->autoRender = false;
-            $this->viewBuilder()
-                ->template($param);
+            $this->viewBuilder()->template($param);
             //debug($param);
         }else{
             debug("rien a afficher");

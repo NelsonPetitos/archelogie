@@ -15,25 +15,29 @@
         <table class="custom__table">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('title', 'Titre de la publication') ?></th>
+                <th>Auteur(s)</th>
                 <th><?= $this->Paginator->sort('annee', 'Année') ?></th>
-                <th><?= $this->Paginator->sort('reference', 'Reférence bibliographique') ?></th>
+                <th><?= $this->Paginator->sort('title', 'Titre de la publication') ?></th>
             </tr>
             </thead>
             <tr>
-                <th><?= $this->Search->displayField('title', 'string'); ?></th>
+                <th><?= $this->Search->displayField('auteurs', 'none'); ?></th>
                 <th><?= $this->Search->displayField('annee', 'number'); ?></th>
-                <th><?= $this->Search->displayField('reference', 'string'); ?></th>
+                <th><?= $this->Search->displayField('title', 'string'); ?></th>
             </tr>
             <tbody id="data_table_body">
                 <?php if(count($publications) > 0): ?>
-                    <?php foreach ($publications as $publication): ?>
-                    <tr onclick='voirDetail("<?= Cake\Routing\Router::url(['controller' => 'publications', 'action' => 'view', $publication->id]); ?>")'>
-                        <td><?= h($publication->title) ?></td>
-                        <td><?= __($publication->annee) ?></td>
-                        <td><?= h($publication->reference) ?></td>
-                    </tr>
+                <?php foreach ($publications as $publication): ?>
+                <tr onclick='voirDetail("<?= Cake\Routing\Router::url(['controller' => 'publications', 'action' => 'view', $publication->id]); ?>")'>
+                <td>
+                    <?php foreach ($publication->auteurs as $auteur): ?>
+                    <?= $auteur->name.", " ?>
                     <?php endforeach; ?>
+                </td>
+                <td><?= __($publication->annee) ?></td>
+                <td><?= h($publication->title) ?></td>
+                </tr>
+                <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>

@@ -104,15 +104,15 @@ function displaySiteSearchResults(sites, isAdmin) {
 //Afficher les résultats d'une recherche sur les PUBLICATIONS
 function displayPublicationSearchResults(publications, isAdmin) {
     if(publications.length == 0){
-        $('#data_table_body').html('<tr><td colspan="4" style="text-align: center; font-size: 14px;">Aucune publication pour cette recherche</td></tr>');
+        $('#data_table_body').html('<tr><td colspan="4" style="text-align: center; font-size: 14px;">Aucunes publications pour cette recherche</td></tr>');
     }else {
         $.each(publications, function( index, publication ) {
             var formname = "post_"+index;
             var apenstr =
                 '<tr>' +
-                    '<td>'+((publication.title == null)?"":publication.title)+'</td>' +
+                    '<td>'+displayAuthorNames(publication.auteurs)+'</td>'+
                     '<td>'+((publication.annee == null)?"":publication.annee)+'</td>' +
-                    '<td>'+((publication.reference == null)?"":publication.reference)+'</td>';
+                    '<td>'+((publication.title == null)?"":publication.title)+'</td>';
             if(isAdmin){
                 apenstr +=
                     '<td class="action">' +
@@ -227,7 +227,9 @@ function voirDetail(url){
 
 //Identifier tout les champs de recherches de la page.
 function selectInput() {
-    return document.querySelectorAll('[data-class]');
+
+    return document.querySelectorAll("[data-opname]");
+    // return document.querySelectorAll('[data-class]');
 }
 
 
@@ -315,6 +317,7 @@ function ajaxPageLoader(request_url) {
 function getSearchParams() {
     var params = [], operat;
     var textFields = selectInput();
+    // var textFields = document.querySelectorAll("[data-opname]");
     for(var i = 0; i < textFields.length; i++){
         var field = textFields[i].dataset.opname;
         var tab = textFields[i].dataset.tab;
@@ -365,6 +368,13 @@ function showLoader(){
     document.getElementById('archeologie_loader').style.display = 'inline-block';
 }
 
+function displayAuthorNames(authors){
+    var name = ""
+    for(var i = 0; i < authors.length; i++){
+        name += authors[i].name+", "
+    }
+    return name
+}
 
 function hideLoader(){
     document.getElementById('archeologie_loader').style.display = 'none';

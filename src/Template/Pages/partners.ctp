@@ -96,13 +96,5 @@
             </div>
         <div class="col-md-2" ></div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <hr/>
-            <h3><span class="glyphicon glyphicon-transfer"></span> Devenir partenaires</h3>
-            <hr/>
-            <p></p>
-        </div>
-    </div>
 </div>
 

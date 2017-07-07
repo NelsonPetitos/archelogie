@@ -39,6 +39,6 @@ class Publication extends Entity
      */
     protected function _getFullName()
     {
-        return $this->_properties['annee']. ' - «' .$this->_properties['title']. '», ' .$this->_properties['reference'];
+        return $this->_properties['annee']. ' - ' .$this->_properties['title'].' - '.$this->_properties['reference'];
     }
 }

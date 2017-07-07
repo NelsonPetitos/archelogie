@@ -25,7 +25,16 @@ class PublicationsController extends AppController
      */
     public function index()
     {
-        $query = $this->Publications->find()->where(['Publications.source_id' => 2]);
+        $query = $this->Publications->find()
+            ->select(['Publications.id', 'Publications.annee', 'Publications.title'])
+            ->contain([
+                'Auteurs' => function ($q) {
+                    return $q->select([
+                        'Auteurs.id', 'Auteurs.name'
+                    ]);
+                }
+            ])
+            ->where(['Publications.source_id' => 2]);
 
         if($this->request->is('ajax')){
             //set the pagination informations

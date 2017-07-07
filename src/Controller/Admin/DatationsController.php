@@ -44,7 +44,7 @@ class DatationsController extends AppController
                 $datas = $this->paginate($query);
             }
 
-            //Get pagination for the view.
+            //Get pagination html for the view.
             $view = new View($this->request, $this->response, null);
             $view->layout = 'ajax';
             $view->viewPath = '../Template/All';
@@ -247,6 +247,13 @@ class DatationsController extends AppController
                         $materiel->id = $objet->id;
                         if($this->Materiels->save($materiel)){
                             $this->Flash->success(__('The objet has been saved.'));
+
+                            //Change the render layout to render an ajax object
+//                            $this->RequestHandler->renderAs($this, 'json');
+//                            $this->response->type('application/json');
+//                            $this->viewBuilder()->layout('ajax');
+//                            $this->set(compact('objet'));
+
                             return $this->redirect(['action' => 'add']);
                         }
                     }

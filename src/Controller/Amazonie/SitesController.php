@@ -27,6 +27,7 @@ class SitesController extends AppController
      */
     public function index(){
         $query = $this->Sites->find()->where(['Sites.source_id' => 2]);
+
         if($this->request->is('ajax')){
             //set the pagination informations
             $this->paginate = [

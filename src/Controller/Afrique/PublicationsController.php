@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Routing\Router;
 use Cake\View\View;
+
 /**
  * Publications Controller
  *
@@ -25,9 +26,18 @@ class PublicationsController extends AppController
      */
     public function index()
     {
-        $query = $this->Publications->find()->where(['Publications.source_id' => 1]);
+        $query = $this->Publications->find()
+            ->select(['Publications.id', 'Publications.annee', 'Publications.title'])
+            ->contain([
+                'Auteurs' => function ($q) {
+                    return $q->select([
+                        'Auteurs.id', 'Auteurs.name'
+                    ]);
+                }
+            ])
+            ->where(['Publications.source_id' => 1]);
 
-        if($this->request->is('ajax')){
+        if ($this->request->is('ajax')) {
             //set the pagination informations
             $this->paginate = [
                 'page' => $this->request->query('page'),
@@ -37,11 +47,11 @@ class PublicationsController extends AppController
                 ]
             ];
 
-            if(count($this->request->data(['params']) != 0)){
-                $params  = $this->request->data(['params']);
+            if (count($this->request->data(['params']) != 0)) {
+                $params = $this->request->data(['params']);
                 $conditions = $this->Search->searchConditions($params, 'Publications');
                 $datas = $this->paginate($query->andWhere($conditions));
-            }else{
+            } else {
                 $datas = $this->paginate($query);
             }
 
@@ -58,7 +68,7 @@ class PublicationsController extends AppController
             $this->set(compact('datas'));
             $this->set(compact('pagination'));
             $this->set('_serialize', ['datas', 'pagination']);
-        }else{
+        } else {
             $this->set('searchUrl', Router::url(['controller' => 'Publications', 'prefix' => 'afrique', '?' => ['page' => 1],]));
             $this->paginate = [
                 'limit' => 10,

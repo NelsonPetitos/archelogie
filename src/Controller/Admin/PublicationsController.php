@@ -19,7 +19,15 @@ class PublicationsController extends AppController
      * @return \Cake\Network\Response|null
      */
     public function index(){
-        $query = $this->Publications->find();
+        $query = $this->Publications->find()
+            ->select(['Publications.id', 'Publications.annee', 'Publications.title'])
+            ->contain([
+                'Auteurs' => function ($q) {
+                    return $q->select([
+                        'Auteurs.id', 'Auteurs.name'
+                    ]);
+                }
+            ]);
         if($this->request->is('ajax')){
             //set the pagination informations
             $this->paginate = [

@@ -20,14 +20,18 @@
 
         <!-- Page Content -->
         <div class="container">
-            <!-- Ajouter les messages flash-->
-            <?= $this->Flash->render() ?>
-
-            <?= $this->fetch('Breadcrumb'); ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <?= $this->Flash->render() ?>
+                </div>
+                <div class="col-xs-12">
+                    <?= $this->fetch('Breadcrumb'); ?>
+                </div>
+            </div>
 
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xs-12">
                     <?= $this->fetch('content') ?>
                 </div>
             </div>

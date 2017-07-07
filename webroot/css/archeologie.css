@@ -1,7 +1,8 @@
-
-
 /*Pour faire en sorte que le width et le height prennent en compte la padding et le border*/
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
