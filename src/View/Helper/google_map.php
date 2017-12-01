@@ -32,10 +32,13 @@ class GoogleMapHelper extends Helper {
 
     var $errors = array();
 
-    var $key = "AIzaSyA5wZBahcHD4V2OLz6yO9SHUo3T1C8BbrI";
+    var $key = "AIzaSyBPCAdxSiiPDovpbzk4x7vTXwhmzyB_-Ss";
 
     var $url ="http://maps.google.com/maps/api/js?sensor=false";
 
+    function initGoogleMap(){
+        
+    }
     function map($default, $style = 'width: 600px; height: 300px' )
 
     {

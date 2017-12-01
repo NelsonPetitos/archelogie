@@ -9,6 +9,7 @@
         <?= $this->Html->css('skinblue'); ?>
         <?= $this->Html->css('loader'); ?>
         <?= $this->Html->css('select2'); ?>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPCAdxSiiPDovpbzk4x7vTXwhmzyB_-Ss"></script>
     </head>
 
     <body class="hold-transition skin-blue sidebar-mini">
@@ -144,10 +145,11 @@
         </div>
 
         <?= $this->Html->script('jquery'); ?>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+        <!--<?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyBPCAdxSiiPDovpbzk4x7vTXwhmzyB_-Ss"); ?>-->
         <?= $this->Html->script('jquery.livequery.min'); ?>
         <?= $this->Html->script('bootstrap.min'); ?>
         <?= $this->Html->script('create_datation'); ?>
-        <?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyDQX_r-1uRMngsGXL-Hk_mWkZ6icGBBs2E"); ?>
         <?= $this->Html->script('archeologie'); ?>
         <?= $this->Html->script('app'); ?>
         <?= $this->Html->script('select2.min'); ?>

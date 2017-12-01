@@ -17,6 +17,23 @@
 <?= $this->end(); ?>
 
 <div class="row">
+
+    <div class="col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">Auteurs</div>
+            <div class="panel-body">
+                <ul>
+                        <?php foreach ($publication->auteurs as $auteur): ?>
+                    <li>
+                        <?= h($auteur->name) ?>
+                    </li>
+                        <?php endforeach; ?>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
     <div class="col-md-9">
         <div class="panel panel-info">
             <div class="panel-heading">Publication</div>
@@ -35,21 +52,6 @@
                         <td><?= $publication->reference ?></td>
                     </tr>
                 </table>
-            </div>
-
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="panel panel-info">
-            <div class="panel-heading">Auteurs</div>
-            <div class="panel-body">
-                <ul>
-                        <?php foreach ($publication->auteurs as $auteur): ?>
-                    <li>
-                        <?= h($auteur->name) ?>
-                    </li>
-                        <?php endforeach; ?>
-                </ul>
             </div>
 
         </div>

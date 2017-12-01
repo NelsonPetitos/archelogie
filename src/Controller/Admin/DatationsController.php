@@ -197,6 +197,13 @@ class DatationsController extends AppController
             $this->response->type('html');
 
             switch ($remote){
+                case 'auteur':
+                    $this->loadModel('Auteurs');
+                    $auteur = $this->Auteurs->newEntity();
+                    $this->set(compact('auteur'));
+                    $this->set('_serialize', ['auteur']);
+                    break;
+
                 case 'objet':
                     $this->loadModel('Objets');
                     $objet = $this->Objets->newEntity();
@@ -232,7 +239,8 @@ class DatationsController extends AppController
 
         }
 
-        if($this->request->is('post') && $remote){
+        if($this->request->is('ajax') && $this->request->is('post') && $remote){
+            $this->set(compact('remote'));
             switch ($remote){
                 case 'objet':
                     $this->loadModel('Objets');
@@ -246,19 +254,18 @@ class DatationsController extends AppController
                     if ($this->Objets->save($objet)) {
                         $materiel->id = $objet->id;
                         if($this->Materiels->save($materiel)){
+
                             $this->Flash->success(__('The objet has been saved.'));
 
                             //Change the render layout to render an ajax object
-//                            $this->RequestHandler->renderAs($this, 'json');
-//                            $this->response->type('application/json');
-//                            $this->viewBuilder()->layout('ajax');
-//                            $this->set(compact('objet'));
-
-                            return $this->redirect(['action' => 'add']);
+                            $this->RequestHandler->renderAs($this, 'json');
+                            $this->response->type('application/json');
+                            $this->viewBuilder()->layout('ajax');
+                            $this->set(compact('objet'));
+                            $this->set('_serialize', ['objet', 'remote']);
                         }
                     }
                     $this->Flash->error(__('The objet could not be saved. Please, try again.'));
-
                     break;
 
                 case 'site':
@@ -266,7 +273,13 @@ class DatationsController extends AppController
                     $site = $this->Datations->Sites->patchEntity($site, $this->request->data);
                     if ($this->Datations->Sites->save($site)) {
                         $this->Flash->success(__('The site has been saved.'));
-                        return $this->redirect(['action' => 'add']);
+
+                        //Change the render layout to render an ajax site
+                        $this->RequestHandler->renderAs($this, 'json');
+                        $this->response->type('application/json');
+                        $this->viewBuilder()->layout('ajax');
+                        $this->set(compact('site'));
+                        $this->set('_serialize', ['site', 'remote']);
                     } else {
                         $this->Flash->error(__('The site could not be saved. Please, try again.'));
                     }
@@ -277,7 +290,13 @@ class DatationsController extends AppController
                     $publication = $this->Datations->Publications->patchEntity($publication, $this->request->data);
                     if ($this->Datations->Publications->save($publication)) {
                         $this->Flash->success(__('The publication has been saved.'));
-                        return $this->redirect(['action' => 'add']);
+
+                        //Change the render layout to render an ajax publication
+                        $this->RequestHandler->renderAs($this, 'json');
+                        $this->response->type('application/json');
+                        $this->viewBuilder()->layout('ajax');
+                        $this->set(compact('publication'));
+                        $this->set('_serialize', ['publication', 'remote']);
                     } else {
                         $this->Flash->error(__('The publication could not be saved. Please, try again.'));
                     }
@@ -288,13 +307,61 @@ class DatationsController extends AppController
                     $laboratoire = $this->Datations->Laboratoires->patchEntity($laboratoire, $this->request->data);
                     if ($this->Datations->Laboratoires->save($laboratoire)) {
                         $this->Flash->success(__('The laboratoire has been saved.'));
-                        return $this->redirect(['action' => 'add']);
+
+                        //Change the render layout to render an ajax laboratoire
+                        $this->RequestHandler->renderAs($this, 'json');
+                        $this->response->type('application/json');
+                        $this->viewBuilder()->layout('ajax');
+                        $this->set(compact('laboratoire'));
+                        $this->set('_serialize', ['laboratoire', 'remote']);
                     } else {
                         $this->Flash->error(__('The laboratoire could not be saved. Please, try again.'));
                     }
                     break;
 
+                case 'auteur':
+                    $this->loadModel('Auteurs');
+                    $auteur = $this->Auteurs->newEntity();
+                    $auteur = $this->Auteurs->patchEntity($auteur, $this->request->data);
+                    if ($this->Auteurs->save($auteur)) {
+                        $this->Flash->success(__('The auteur has been saved.'));
+
+                        //Get create publication html for the view.
+                        $publication = $this->Datations->Publications->newEntity();
+                        $sources = $this->Datations->Publications->Sources->find('list');
+                        $auteurs = $this->Datations->Publications->Auteurs->find('list');
+                        //instanciate view
+                        $view = new View($this->request, $this->response, null);
+                        $view->layout = 'ajax';
+                        $view->viewPath = '/All';
+                        //Set view var
+                        $view->set('remote', 'publication');
+                        $view->set(compact('publication', 'sources', 'auteurs', 'auteur'));
+                        $view->set('_serialize', ['publication']);
+                        $publicationView = $view->render('formulaire');
+
+
+                        //Change the render layout to render an ajax laboratoire
+                        $this->RequestHandler->renderAs($this, 'json');
+                        $this->response->type('application/json');
+                        $this->viewBuilder()->layout('ajax');
+
+                        //Define result variables
+                        $this->set(compact('publicationView'));
+//                        $this->set(compact('auteur'));
+                        $this->set('_serialize', ['auteur', 'remote', 'publicationView']);
+
+                    } else {
+                        $this->Flash->error(__('The auteur could not be saved. Please, try again.'));
+                    }
+                    break;
+
                 default:
+                    //Change the render layout to render nothing
+                    $this->RequestHandler->renderAs($this, 'json');
+                    $this->response->type('application/json');
+                    $this->viewBuilder()->layout('ajax');
+
                     break;
             }
         }

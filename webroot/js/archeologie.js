@@ -23,10 +23,12 @@ function setEvenListenSearchInputText() {
 function attachPagination() {
     $('.pagination > li > a').bind('click', function(e) {
         e.preventDefault();
+        if($(this).parent().hasClass('disabled')){
+            console.log('Do nothing')
+            return;
+        }
         var request_url = $(this).attr('href');
         $('#archeologie_ajaxchUrl').val(request_url);
-        // request_url += '&limit='+$('#paginateLimit').val();
-        // console.log('Lien ajax : '+request_url);
         ajaxPageLoader(request_url);
         return ;
     })
@@ -236,6 +238,10 @@ function selectInput() {
 //Fonction permettant de decider quelle methodes devra afficher les résultats d'une recherche.
 function callDisplayMethod(datas, cheminUrl) {
     var split = cheminUrl.split('/');
+    if(split.length < 4){
+        console.log('Wrong url = '+cheminUrl);
+        return;
+    }
     var model = split[3].split('?')[0]; //Pour retirer les infos de paginations
     var isAdmin = (split[2] == 'admin');
 
@@ -399,14 +405,17 @@ function setPageToOne(url) {
 }
 
 function drawMap() {
-    if($('#lalat').html() && $('#lalong').html()){
-        // console.log('on peut dessiner la carte');
+
+    if(document.getElementById('lalat') && document.getElementById('lalong')){
+        console.log('on peut dessiner la carte');
+
         var lalat = parseFloat($('#lalat').html());
         var lalong = parseFloat($('#lalong').html());
         var sitename = $('#sitename').html();
 
-        // console.log(lalat);
-        // console.log(lalong);
+        console.log(lalat);
+        console.log(lalong);
+
         if(typeof lalat !== 'undefined' && typeof lalong !== 'undefined') {
             var myLatlng = new google.maps.LatLng(lalat, lalong);
             var carte = new google.maps.Map(document.getElementById('map__cartographie'), {
@@ -433,8 +442,6 @@ function drawMap() {
                 bulle.open(this.getMap(), this);
             });
         }
-    }else{
-        // console.log('On ne peut pas dessiner la carte');
     }
 }
 

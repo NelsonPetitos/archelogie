@@ -23,6 +23,7 @@
     </div>
 <?= $this->end(); ?>
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-8" >
@@ -52,21 +53,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="map__card">
-                        <?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyAt76Pcfr0uKwMgicAtyksRa6hkXyYKep0&sensor=false", array(false)); ?>
-                        <?php
-                                $map_options_one = [
-                                "id"         => "map_canvas",
-                                "width"      => "350px",
-                                "height"     => "400px",
-                                "zoom"       => 4,
-                                "localize"   => false,
-                                'type' => 'HYBRID',
-                                'latitude' => 2.15055,
-                                'longitude' => 13.34027,
-                                ];
-                                ?>
-                        <?= $this->GoogleMap->map($map_options_one); ?>
+                    <div class="row map__card">
+                       <div class="map_container" id="map_canvas_one"></div>
                         <div class="map__description">
                             <div class="map__description__title">Afrique Centrale</div>
                             <div class="map__description__body">Zone géographique des sites archéologiques d'Afrique Centrale.</div><br/>
@@ -78,21 +66,8 @@
                 </div>
 
                 <div class="col-md-6 text-center">
-                    <div class="map__card">
-                        <?php
-                            $map_options_two = [
-                                "id"         => "map_canvas_two",
-                                "width"      => "350px",
-                                "height"     => "400px",
-                                "zoom"       => 4,
-                                "localize"   => false,
-                                'type' => 'HYBRID',
-                                'latitude' => 2.15055,
-                                'longitude' => -64.145810 ,
-                                ];
-                                ?>
-                        <?= $this->GoogleMap->map($map_options_two); ?>
-
+                    <div class="row map__card">
+                        <div class="map_container" id="map_canvas_two"></div>
                         <div class="map__description">
                             <div class="map__description__title">Bassin amazonien</div>
                             <div class="map__description__body">Zone géographique des sites archéologiques du bassin amazonien.</div><br/>
@@ -124,5 +99,3 @@
         </div>
     </div>
 </div>
-
-<!--<?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyAt76Pcfr0uKwMgicAtyksRa6hkXyYKep0&sensor=false", array(false)); ?>-->

@@ -2,29 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c55a787d-0bab-45de-9994-b39631626902" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Error/pdo_error.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Layout/error_old.ctp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/img/slideone1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/img/slidetwo1.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/slidefive.jpg" afterPath="$PROJECT_DIR$/webroot/img/slidefive.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/slidefour.jpg" afterPath="$PROJECT_DIR$/webroot/img/slidefour.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/slideone.jpg" afterPath="$PROJECT_DIR$/webroot/img/slideone.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/slidethree.jpg" afterPath="$PROJECT_DIR$/webroot/img/slidethree.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/img/slidetwo.jpg" afterPath="$PROJECT_DIR$/webroot/img/slidetwo.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/DatationsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/DatationsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/PublicationsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/PublicationsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Afrique/PublicationsController.php" afterPath="$PROJECT_DIR$/src/Controller/Afrique/PublicationsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Amazonie/PublicationsController.php" afterPath="$PROJECT_DIR$/src/Controller/Amazonie/PublicationsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Amazonie/SitesController.php" afterPath="$PROJECT_DIR$/src/Controller/Amazonie/SitesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/PagesController.php" afterPath="$PROJECT_DIR$/src/Controller/PagesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/UsersController.php" afterPath="$PROJECT_DIR$/src/Controller/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Entity/Publication.php" afterPath="$PROJECT_DIR$/src/Model/Entity/Publication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Table/PublicationsTable.php" afterPath="$PROJECT_DIR$/src/Model/Table/PublicationsTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Publications/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Publications/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Afrique/Default/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Afrique/Default/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Afrique/Publications/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Afrique/Publications/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Amazonie/Default/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Amazonie/Default/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Amazonie/Publications/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Amazonie/Publications/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Afrique/Publications/view.ctp" afterPath="$PROJECT_DIR$/src/Template/Afrique/Publications/view.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/All/formulaire.ctp" afterPath="$PROJECT_DIR$/src/Template/All/formulaire.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Amazonie/Publications/view.ctp" afterPath="$PROJECT_DIR$/src/Template/Amazonie/Publications/view.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/afriqueCentraleLayout.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/afriqueCentraleLayout.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/amazonieLayout.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/amazonieLayout.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/default.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/error.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/error.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pages/home.ctp" afterPath="$PROJECT_DIR$/src/Template/Pages/home.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Pages/partners.ctp" afterPath="$PROJECT_DIR$/src/Template/Pages/partners.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Helper/SearchHelper.php" afterPath="$PROJECT_DIR$/src/View/Helper/SearchHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Helper/google_map.php" afterPath="$PROJECT_DIR$/src/View/Helper/google_map.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/css/archeologie.css" afterPath="$PROJECT_DIR$/webroot/css/archeologie.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/css/select2.css" afterPath="$PROJECT_DIR$/webroot/css/select2.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/js/archeologie.js" afterPath="$PROJECT_DIR$/webroot/js/archeologie.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/js/cartographie.js" afterPath="$PROJECT_DIR$/webroot/js/cartographie.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/js/create_datation.js" afterPath="$PROJECT_DIR$/webroot/js/create_datation.js" />
     </list>
     <ignored path="nouveau.iws" />
@@ -52,87 +55,6 @@
   <component name="FavoritesManager">
     <favorites_list name="nouveau" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="adminLayout.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_datation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/js/create_datation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatationsController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Admin/DatationsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="251" column="59" lean-forward="false" selection-start-line="251" selection-start-column="59" selection-end-line="254" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="archeologie.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webroot/js/archeologie.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="300" column="29" lean-forward="false" selection-start-line="300" selection-start-column="12" selection-end-line="300" selection-end-column="29" />
-              <folding>
-                <marker date="1499415638000" expanded="true" signature="1328:1364" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="2896:2909" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="3497:3533" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="4886:4899" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="5500:5536" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="6567:6580" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="7188:7224" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="8516:8529" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="9007:9043" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="10069:10082" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="10546:10582" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="11470:11483" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="18009:18055" ph="..." />
-                <marker date="1499415638000" expanded="true" signature="18105:18123" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Datations/index.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="100" lean-forward="true" selection-start-line="17" selection-start-column="100" selection-end-line="17" selection-end-column="100" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1965">
-              <caret line="137" column="35" lean-forward="false" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -143,36 +65,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loading</find>
-      <find>edit</find>
-      <find>index</find>
-      <find>text</find>
-      <find>bounceball</find>
-      <find>flash</find>
-      <find>displayAuteurSearchResults</find>
-      <find>displaypubli</find>
-      <find>map__cartographie</find>
-      <find>my__table</find>
-      <find>sitedetailUrl</find>
-      <find>select2-search__field</find>
-      <find>drawMap</find>
-      <find>flyer_container</find>
-      <find>wrap</find>
       <find>ajaxCreate</find>
       <find>archeologie_loader</find>
       <find>wrap_loader</find>
       <find>change</find>
-      <find>paginateLimit</find>
       <find>delete</find>
       <find>Pages</find>
-      <find>slider__img</find>
       <find>selectInput</find>
       <find>archeologie</find>
-      <find>ajaxcreate</find>
       <find>attachEventListener</find>
       <find>modal_add_form_content</find>
-      <find>add</find>
       <find>callDisplayMethod</find>
+      <find>add</find>
+      <find>displayForm</find>
+      <find>slider__img</find>
+      <find>menu__fixed</find>
+      <find>scroll</find>
+      <find>.slider__</find>
+      <find>geocoder</find>
+      <find>map_canvas</find>
+      <find>map__card</find>
+      <find>initMap</find>
+      <find>drawMap</find>
+      <find>mapregion</find>
+      <find>map__cartographie</find>
+      <find>lalat</find>
+      <find>lalongpaginateLimit</find>
+      <find>paginateLimit</find>
+      <find>ajaxPageLoader</find>
+      <find>ajaxcreate</find>
+      <find>handleAjaxCreation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,19 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Template/Admin/Datations/view.ctp" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/LaboratoiresController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Amazonie/DatationsController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Afrique/SitesController.php" />
-        <option value="$PROJECT_DIR$/src/Template/Element/navigation.ctp" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/AuteursController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Afrique/DatationsController.php" />
-        <option value="$PROJECT_DIR$/webroot/css/select2.css" />
-        <option value="$PROJECT_DIR$/src/Template/All/formulaire.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Layout/amazonieLayout.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Amazonie/Publications/view.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Afrique/Publications/view.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Objets/add.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Objets/index.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/ObjetsController.php" />
@@ -201,10 +110,8 @@
         <option value="$PROJECT_DIR$/src/Template/Admin/Users/add.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/SitesController.php" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/UsersController.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/src/Model/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Users/edit.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Roles/index.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Roles/add.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Roles/edit.ctp" />
@@ -224,14 +131,29 @@
         <option value="$PROJECT_DIR$/src/Controller/Admin/PublicationsController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PagesController.php" />
         <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
-        <option value="$PROJECT_DIR$/webroot/css/archeologie.css" />
         <option value="$PROJECT_DIR$/config/routes.php" />
-        <option value="$PROJECT_DIR$/src/Template/Pages/home.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
-        <option value="$PROJECT_DIR$/webroot/js/archeologie.js" />
         <option value="$PROJECT_DIR$/src/Model/Entity/Publication.php" />
+        <option value="$PROJECT_DIR$/src/View/Helper/GoogleMapHelper.php" />
+        <option value="$PROJECT_DIR$/src/View/Helper/google_map.php" />
+        <option value="$PROJECT_DIR$/src/Template/Pages/home.ctp" />
+        <option value="$PROJECT_DIR$/webroot/css/archeologie.css" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/default.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/afriqueCentraleLayout.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/amazonieLayout.ctp" />
+        <option value="$PROJECT_DIR$/webroot/js/cartographie.js" />
+        <option value="$PROJECT_DIR$/src/Template/Afrique/Publications/view.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Amazonie/Publications/view.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp" />
+        <option value="$PROJECT_DIR$/webroot/css/select2.css" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp" />
+        <option value="$PROJECT_DIR$/src/Model/Table/ObjetsTable.php" />
+        <option value="$PROJECT_DIR$/src/Template/Layout/error.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Error/pdo_error.ctp" />
+        <option value="$PROJECT_DIR$/webroot/js/archeologie.js" />
         <option value="$PROJECT_DIR$/webroot/js/create_datation.js" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/DatationsController.php" />
+        <option value="$PROJECT_DIR$/src/Template/All/formulaire.ctp" />
+        <option value="$PROJECT_DIR$/config/app.php" />
       </list>
     </option>
   </component>
@@ -246,10 +168,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-332" />
-    <option name="y" value="-1058" />
-    <option name="width" value="1920" />
-    <option name="height" value="1058" />
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="748" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -266,16 +187,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -312,24 +223,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -348,7 +241,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
+              <option name="myItemId" value="View" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,10 +260,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Layout" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -392,39 +281,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="All" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nouveau" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="Element" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -440,6 +297,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Extensions" />
               <option name="myItemType" value="com.intellij.ide.scratch.ScratchProjectViewPane$MyRootNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -629,12 +496,22 @@
       <workItem from="1499008456616" duration="150000" />
       <workItem from="1499326703862" duration="3749000" />
       <workItem from="1499343620416" duration="11999000" />
-      <workItem from="1499414416599" duration="3736000" />
+      <workItem from="1499414416599" duration="5728000" />
+      <workItem from="1499436147134" duration="2946000" />
+      <workItem from="1499445248419" duration="19318000" />
+      <workItem from="1499610774956" duration="12131000" />
+      <workItem from="1499685412542" duration="3063000" />
+      <workItem from="1499689363258" duration="12167000" />
+      <workItem from="1499926195013" duration="877000" />
+      <workItem from="1501513827774" duration="3000" />
+      <workItem from="1509791650576" duration="1046000" />
+      <workItem from="1510967421946" duration="1587000" />
+      <workItem from="1510969293335" duration="726000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="822929000" />
+    <option name="totallyTimeSpent" value="878785000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -646,10 +523,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-332" y="-1058" width="1920" height="1058" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1280" height="748" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20607029" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1825525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932332" sideWeight="0.49676898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932332" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -706,407 +583,5 @@
       <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Sites/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="36" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Table/UsersTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="70" column="49" lean-forward="false" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/SitesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Sites/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="45" column="193" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Roles/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="133" lean-forward="false" selection-start-line="21" selection-start-column="133" selection-end-line="21" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Roles/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="84" lean-forward="false" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Sites/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Users/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="57" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Roles/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Users/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="28" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Users/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pages/partners.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="97" column="10" lean-forward="false" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Roles/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="17" lean-forward="false" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Sites/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="38" column="14" lean-forward="false" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Afrique/Sites/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Afrique/Sites/view.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Amazonie/Default/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Afrique/Default/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Table/AuteursTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Component/SearchComponent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Amazonie/SitesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="89" column="38" lean-forward="true" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Afrique/PublicationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="36" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Amazonie/Sites/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Amazonie/Publications/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/PublicationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="43" column="82" lean-forward="true" selection-start-line="43" selection-start-column="82" selection-end-line="43" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Amazonie/PublicationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="35" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Publications/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Afrique/Publications/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/img/geoffroy.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="130" column="4" lean-forward="false" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Pages/home.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/css/archeologie.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="188" column="49" lean-forward="false" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Entity/Publication.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="83" lean-forward="false" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Table/PublicationsTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="50" column="50" lean-forward="true" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Helper/SearchHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="75" lean-forward="false" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
-          <folding>
-            <marker date="1499347757000" expanded="true" signature="623:627" ph="&lt;" />
-            <marker date="1499347757000" expanded="true" signature="665:669" ph="&gt;" />
-            <marker date="1499347757000" expanded="true" signature="1644:1648" ph="&lt;" />
-            <marker date="1499347757000" expanded="true" signature="1686:1690" ph="&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Element/carousel.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="61" lean-forward="true" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/adminLayout.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Datations/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="100" lean-forward="true" selection-start-line="17" selection-start-column="100" selection-end-line="17" selection-end-column="100" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Datations/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1965">
-          <caret line="137" column="35" lean-forward="false" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/js/create_datation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/All/pagination.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/ajax.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webroot/js/archeologie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="300" column="29" lean-forward="false" selection-start-line="300" selection-start-column="12" selection-end-line="300" selection-end-column="29" />
-          <folding>
-            <marker date="1499415638000" expanded="true" signature="1328:1364" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="2896:2909" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="3497:3533" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="4886:4899" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="5500:5536" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="6567:6580" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="7188:7224" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="8516:8529" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="9007:9043" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="10069:10082" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="10546:10582" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="11470:11483" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="18009:18055" ph="..." />
-            <marker date="1499415638000" expanded="true" signature="18105:18123" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/DatationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="251" column="59" lean-forward="false" selection-start-line="251" selection-start-column="59" selection-end-line="254" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

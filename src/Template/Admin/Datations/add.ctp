@@ -85,7 +85,9 @@
                 <div class="tab-pane" id="tab_4">
                     <div class="row">
                         <div class="col-md-9">
-                            <?php echo $this->Form->select('materiels._ids', $materiels, ['multiple' => true, 'class' => 'materiel-select-list', 'style' => 'width: 100% !important']); ?>
+                            <?php
+                                echo $this->Form->select('materiels._ids', $materiels, ['multiple' => true, 'class' => 'materiel-select-list', 'style' => 'width: 100% !important']);
+                            ?>
                         </div>
                         <div class="col-md-3">
                             <button data-archeologie="true" value="objet" class="btn btn-sm btn-primary">Créer un nouveau objet ?</button>
@@ -134,7 +136,10 @@
         <!-- nav-tabs-custom -->
     </div>
 </div>
+
 <div id="modal_add_form" style="position: absolute; top: 0;left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 999; display: none;">
     <div id="modal_add_form_content" class="col-md-6 col-md-offset-3" style="height: 100%; margin-bottom: 34px; margin-top: 34px; overflow-y: auto;"></div>
 </div>
+
 <input type="hidden" id="ajaxcreate" value="<?= Cake\Routing\Router::url(['controller'=>'Datations', 'action'=>'ajaxform', 'prefix'=>'admin']); ?>" />
+

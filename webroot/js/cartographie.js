@@ -13,12 +13,17 @@ var map, bulle, i, j;
 //Initialisation de la carte google map
 function initMap(lat, lng) {
     // var myLatlng = new google.maps.LatLng(2.15055,13.34027);
-    var myLatlng = new google.maps.LatLng(lat,lng);
-    map = new google.maps.Map(document.getElementById('map__cartographie'), {
-        center: myLatlng,
-        zoom: 4,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-    });
+    if(document.getElementById('map__cartographie')){
+        const myLatlng = new google.maps.LatLng(lat,lng);
+        // console.log('Display map')
+        map = new google.maps.Map(document.getElementById('map__cartographie'), {
+            center: myLatlng,
+            zoom: 4,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        });
+    }else{
+        console.log('je ne vois pas l\'id de cartographie')
+    }
 }
 
 
@@ -53,12 +58,12 @@ function setMinMaxMiddle() {
 function getMapDatas(){
     if(document.getElementById('mapdatasurl')){
         var chemin = document.getElementById('mapdatasurl').value;
-        console.log(chemin);
+        // console.log(chemin);
         if(typeof chemin !== 'undefined'){
             $.post(chemin)
              .done(function(data) {
                  // alert( "second success" );
-                 console.log('Tout est ok')
+                 // console.log('Tout est ok')
                  afficher_marqueur(data.datas, values.middle);
                  return ;
              })
@@ -82,7 +87,7 @@ function getMapDatas(){
 
 //Fonction d'affichage de marqueurs sur une carte
 function afficher_marqueur(datas, valeur) {
-    console.log(datas.length+' datations a afficher');
+    // console.log(datas.length+' datations a afficher');
     if(typeof datas === 'undefined' ){
         datas = [];
         console.log('le tableau de datations a afficher est vide');
@@ -341,7 +346,7 @@ $(document).ready(function () {
     $('input[name="cumul"][value="non"]').prop("checked", true);
 //Initialise les  valeurs generales de l'application
     setMinMaxMiddle();
-    console.log(values);
+    // console.log(values);
 
     getMapDatas();
     // console.log(values);

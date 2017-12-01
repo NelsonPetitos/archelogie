@@ -12,6 +12,7 @@
         <?= $this->Html->css('jquery-ui-slider-pips'); ?>
         <!--<?= $this->Html->css('modern'); ?>-->
         <?= $this->fetch('css') ?>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPCAdxSiiPDovpbzk4x7vTXwhmzyB_-Ss"></script>
 
     </head>
 
@@ -28,7 +29,7 @@
                     <div class="text">Chargement ...</div>
                 </div>
             </div>
-            
+
             <!-- Ajouter les messages flash-->
             <?= $this->Flash->render() ?>
 
@@ -94,6 +95,8 @@
 
         <!-- jQuery -->
         <?= $this->Html->script('jquery'); ?>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+        <!--<?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyBPCAdxSiiPDovpbzk4x7vTXwhmzyB_-Ss"); ?>-->
         <?= $this->Html->script('jquery-ui'); ?>
         <?= $this->Html->script('jquery-ui-slider-pips'); ?>
         <?= $this->Html->script('archeologie'); ?>
@@ -101,7 +104,6 @@
 
         <!-- Bootstrap Core JavaScript -->
         <?= $this->Html->script('bootstrap.min'); ?>
-        <?= $this->Html->script("http://maps.google.com/maps/api/js?key=AIzaSyDQX_r-1uRMngsGXL-Hk_mWkZ6icGBBs2E"); ?>
 
         <?= $this->fetch('script') ?>
     </body>
